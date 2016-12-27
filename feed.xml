@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Data analysis in the 21st century</title>
-    <description>This is a blog about data and statistics.
+    <title>A blog about statistics and data analysis</title>
+    <description>This is a blog about statistics and data analysis.
 </description>
     <link>https://tvatter.github.io//</link>
     <atom:link href="https://tvatter.github.io//feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 27 Dec 2016 03:40:40 +0100</pubDate>
-    <lastBuildDate>Tue, 27 Dec 2016 03:40:40 +0100</lastBuildDate>
+    <pubDate>Tue, 27 Dec 2016 03:45:54 +0100</pubDate>
+    <lastBuildDate>Tue, 27 Dec 2016 03:45:54 +0100</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
   </channel>

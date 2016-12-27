@@ -6,30 +6,9 @@
 </description>
     <link>https://tvatter.github.io//</link>
     <atom:link href="https://tvatter.github.io//feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 27 Dec 2016 02:59:53 +0100</pubDate>
-    <lastBuildDate>Tue, 27 Dec 2016 02:59:53 +0100</lastBuildDate>
+    <pubDate>Tue, 27 Dec 2016 03:09:54 +0100</pubDate>
+    <lastBuildDate>Tue, 27 Dec 2016 03:09:54 +0100</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
-    
-      <item>
-        <title>test</title>
-        <description>&lt;p&gt;Your markdown here!&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;&lt;span class=&quot;n&quot;&gt;plot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://db.yihui.name/jekyll/2016-12-27-test/unnamed-chunk-1-1.png&quot; alt=&quot;plot of chunk unnamed-chunk-1&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Haha&lt;/p&gt;
-</description>
-        <pubDate>Tue, 27 Dec 2016 02:56:11 +0100</pubDate>
-        <link>https://tvatter.github.io//2016/12/test.html</link>
-        <guid isPermaLink="true">https://tvatter.github.io//2016/12/test.html</guid>
-        
-        <category>example1</category>
-        
-        <category>example2</category>
-        
-        
-      </item>
     
   </channel>
 </rss>

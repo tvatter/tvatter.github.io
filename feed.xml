@@ -6,9 +6,113 @@
 </description>
     <link>https://tvatter.github.io//</link>
     <atom:link href="https://tvatter.github.io//feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 05 Jan 2017 10:35:04 -0500</pubDate>
-    <lastBuildDate>Thu, 05 Jan 2017 10:35:04 -0500</lastBuildDate>
+    <pubDate>Tue, 10 Jan 2017 19:02:41 -0500</pubDate>
+    <lastBuildDate>Tue, 10 Jan 2017 19:02:41 -0500</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
+    
+      <item>
+        <title>My Mathematics Genealogy</title>
+        <description>&lt;p&gt;OK, so the first post on this blog is about my (mathematics) genealogy, how narcissistic of me. 
+Anyway, I was looking at various ways to crawl and harvest data from websites (i.e., web crawling and scraping), and I thought that it could be fun to learn about it by extracting my ancestry from the 
+&lt;a href=&quot;https://genealogy.math.ndsu.nodak.edu/&quot;&gt;Mathematics Genealogy Project&lt;/a&gt; (thereafter &lt;a href=&quot;https://genealogy.math.ndsu.nodak.edu/&quot;&gt;MGP&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;Since, to the best of my knowledge, there is no good web crawling and scraping framework in &lt;code class=&quot;highlighter-rouge&quot;&gt;R&lt;/code&gt;, I choose to use &lt;code class=&quot;highlighter-rouge&quot;&gt;scrapy&lt;/code&gt; for &lt;code class=&quot;highlighter-rouge&quot;&gt;Python&lt;/code&gt;, which is both comprehensive, easy to use and fast. After installing the package 
+(e.g., via &lt;code class=&quot;highlighter-rouge&quot;&gt;pip install scrapy&lt;/code&gt;), setting-up a &lt;code class=&quot;highlighter-rouge&quot;&gt;scrapy&lt;/code&gt; directory  with the 
+proper content for the mathematical genealogy project is done by simply running:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;scrapy startproject mgp_spider 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;To scrap the data for a single scholar, I define the class &lt;code class=&quot;highlighter-rouge&quot;&gt;ScholarItem&lt;/code&gt; and 
+add it to &lt;code class=&quot;highlighter-rouge&quot;&gt;items.py&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;class ScholarItem(scrapy.Item):
+    name = scrapy.Field()
+    id = scrapy.Field()
+    children = scrapy.Field()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Note that an &lt;code class=&quot;highlighter-rouge&quot;&gt;advisor&lt;/code&gt; field could also be included, but the information is somewhat redundant.&lt;/p&gt;
+
+&lt;p&gt;Following the &lt;a href=&quot;https://doc.scrapy.org/en/latest/intro/tutorial.html&quot;&gt;tutorial&lt;/a&gt;, a spider
+to crawl my ancestry in the &lt;a href=&quot;https://genealogy.math.ndsu.nodak.edu/&quot;&gt;MGP&lt;/a&gt; by sub-classing &lt;code class=&quot;highlighter-rouge&quot;&gt;scrapy.Spider&lt;/code&gt; in the following way:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;class MgpSpider(scrapy.Spider):
+  name = 'mgpspider'
+
+  def __init__(self, root='202169', *args, **kargs):
+    super(MgpSpider, self).__init__(*args, **kargs)
+    self.start_urls = [
+        'https://www.genealogy.math.ndsu.nodak.edu/id.php?id=' + root
+      ]
+
+  def url_to_id(self, url):
+    tokens = url.split('=')
+    if len(tokens) != 2:
+      return None
+    else:
+      return int(tokens[1])
+
+  def parse(self, response):
+    item = ScholarItem()
+    item['name'] = response.css('h2::text').extract_first().strip()
+    item['id'] = self.url_to_id(response.url)
+    children_urls = response.css('table').re('id\.php\?id=\d*')
+    item['children'] = [self.url_to_id(url) for url in children_urls]
+    yield item
+
+    for href in response.xpath('//div[@id=&quot;mainContent&quot;]').re('id\.php\?id=\d*'):
+          if href not in children_urls:
+            yield scrapy.Request(response.urljoin(href), callback=self.parse)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Apart from the spider’s name, the three functions are as follow:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;__init__&lt;/code&gt; is the constructor, which defines the spider’s starting URL. Note that,
+  by default, root is set as my &lt;a href=&quot;https://genealogy.math.ndsu.nodak.edu/&quot;&gt;MGP&lt;/a&gt; id number.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;url_to_id&lt;/code&gt; converts an URL into an &lt;a href=&quot;https://genealogy.math.ndsu.nodak.edu/&quot;&gt;MGP&lt;/a&gt; id number.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;parse&lt;/code&gt; has two roles:
+    &lt;ul&gt;
+      &lt;li&gt;First, it scraps the current scholar and saves it using &lt;code class=&quot;highlighter-rouge&quot;&gt;scrapy&lt;/code&gt;’s &lt;code class=&quot;highlighter-rouge&quot;&gt;yield&lt;/code&gt;.&lt;/li&gt;
+      &lt;li&gt;Second, it crawls the advisors of the scholar by recursively calling itself.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;And that’s it, the result is then obtained by running:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;scrapy crawl mgpspider -o output.json
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Note that, to crawl the ancestry of my own advisor, I can simply pass its &lt;a href=&quot;https://genealogy.math.ndsu.nodak.edu/&quot;&gt;MGP&lt;/a&gt;
+id number to the spider by running:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;scrapy crawl mgpspider -a root=86905 -o output.json
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;To leverage &lt;code class=&quot;highlighter-rouge&quot;&gt;igraph&lt;/code&gt;’s nice layouts, the next step is loading the data in &lt;code class=&quot;highlighter-rouge&quot;&gt;R&lt;/code&gt; by running:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;jsonlite&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fromJSON&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;output.JSON&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Then, to build an &lt;code class=&quot;highlighter-rouge&quot;&gt;igraph&lt;/code&gt; graph, the easiest way is often to construct the graph’s
+adjacency matrix:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;&lt;span class=&quot;n&quot;&gt;library&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;igraph&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ancestry_adj_mat&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sapply&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;children&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;is.element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ancestry_graph&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;graph_from_adjacency_matrix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ancestry_adj_mat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;V&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ancestry_graph&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Because the full ancestry is a rather messy graph, the following plot is obtained by 
+selecting the sub-graph corresponding my neighborhood of order 18 using &lt;code class=&quot;highlighter-rouge&quot;&gt;igraph&lt;/code&gt;’s &lt;code class=&quot;highlighter-rouge&quot;&gt;make_ego_graph&lt;/code&gt; 
+function (i.e., ancestors with a degree of separation less than or equal to 18):
+&lt;img src=&quot;https://tvatter.github.io/2017-01-10-my-mathematics-genealogy/ancestry_graph-1.png&quot; alt=&quot;plot of chunk ancestry_graph&quot; /&gt;&lt;/p&gt;
+</description>
+        <pubDate>Tue, 10 Jan 2017 19:02:40 -0500</pubDate>
+        <link>https://tvatter.github.io//2017/01/my-mathematics-genealogy.html</link>
+        <guid isPermaLink="true">https://tvatter.github.io//2017/01/my-mathematics-genealogy.html</guid>
+        
+        <category>python</category>
+        
+        <category>R</category>
+        
+        
+      </item>
     
   </channel>
 </rss>

@@ -24,7 +24,7 @@ local({
     knitr::opts_chunk$set(fig.path = sprintf('%s/', gsub('^.+/', '', d)))
     knitr::opts_knit$set(
       base.dir = '~/Dropbox/blog/',
-      base.url = 'http://db.yihui.name/jekyll/'
+      base.url = 'https://tvatter.github.io/'
     )
   }
   knitr::opts_knit$set(width = 70)

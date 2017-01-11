@@ -6,8 +6,8 @@
 </description>
     <link>https://tvatter.github.io//</link>
     <atom:link href="https://tvatter.github.io//feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 10 Jan 2017 19:34:12 -0500</pubDate>
-    <lastBuildDate>Tue, 10 Jan 2017 19:34:12 -0500</lastBuildDate>
+    <pubDate>Tue, 10 Jan 2017 19:36:00 -0500</pubDate>
+    <lastBuildDate>Tue, 10 Jan 2017 19:36:00 -0500</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -101,9 +101,9 @@ adjacency matrix:&lt;/p&gt;
 &lt;p&gt;Because the full ancestry is a rather messy graph, the following plot is obtained by 
 selecting the sub-graph corresponding my neighborhood of order 18 using &lt;code class=&quot;highlighter-rouge&quot;&gt;igraph&lt;/code&gt;’s &lt;code class=&quot;highlighter-rouge&quot;&gt;make_ego_graph&lt;/code&gt; 
 function (i.e., ancestors with a degree of separation less than or equal to 18):
-&lt;img src=&quot;https://tvatter.github.io/images2017-01-10-my-mathematics-genealogy/ancestry_graph-1.png&quot; alt=&quot;plot of chunk ancestry_graph&quot; /&gt;&lt;/p&gt;
+&lt;img src=&quot;https://tvatter.github.io/images/2017-01-10-my-mathematics-genealogy/ancestry_graph-1.png&quot; alt=&quot;plot of chunk ancestry_graph&quot; /&gt;&lt;/p&gt;
 </description>
-        <pubDate>Tue, 10 Jan 2017 19:34:11 -0500</pubDate>
+        <pubDate>Tue, 10 Jan 2017 19:35:59 -0500</pubDate>
         <link>https://tvatter.github.io//2017/01/my-mathematics-genealogy.html</link>
         <guid isPermaLink="true">https://tvatter.github.io//2017/01/my-mathematics-genealogy.html</guid>
         

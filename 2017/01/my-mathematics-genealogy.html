@@ -66,53 +66,53 @@
 Anyway, I was looking at various ways to crawl and harvest data from websites (i.e., web crawling and scraping), and I thought that it could be fun to learn about it by extracting my ancestry from the 
 <a href="https://genealogy.math.ndsu.nodak.edu/">Mathematics Genealogy Project</a> (thereafter <a href="https://genealogy.math.ndsu.nodak.edu/">MGP</a>).</p>
 
-<p>Since, to the best of my knowledge, there is no good web crawling and scraping framework in <code class="highlighter-rouge">R</code>, I choose to use <code class="highlighter-rouge">scrapy</code> for <code class="highlighter-rouge">Python</code>, which is both comprehensive, easy to use and fast. After installing the package 
+<p>Since, to the best of my knowledge, there is no good web crawling and scraping framework in R, I choose to use <code class="highlighter-rouge">scrapy</code> for Python, which is both comprehensive, easy to use and fast. After installing the package 
 (e.g., via <code class="highlighter-rouge">pip install scrapy</code>), setting-up a <code class="highlighter-rouge">scrapy</code> directory  with the 
 proper content for the mathematical genealogy project is done by simply running:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>scrapy startproject mgp_spider 
-</code></pre>
-</div>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">scrapy startproject mgp_spider </code></pre></figure>
+
 <p>To scrap the data for a single scholar, I define the class <code class="highlighter-rouge">ScholarItem</code> and 
 add it to <code class="highlighter-rouge">items.py</code>:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>class ScholarItem(scrapy.Item):
-    name = scrapy.Field()
-    id = scrapy.Field()
-    children = scrapy.Field()
-</code></pre>
-</div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">ScholarItem</span><span class="p">(</span><span class="n">scrapy</span><span class="o">.</span><span class="n">Item</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Field</span><span class="p">()</span>
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Field</span><span class="p">()</span>
+    <span class="n">children</span> <span class="o">=</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Field</span><span class="p">()</span></code></pre></figure>
+
 <p>Note that an <code class="highlighter-rouge">advisor</code> field could also be included, but the information is somewhat redundant.</p>
 
 <p>Following the <a href="https://doc.scrapy.org/en/latest/intro/tutorial.html">tutorial</a>, a spider
 to crawl my ancestry in the <a href="https://genealogy.math.ndsu.nodak.edu/">MGP</a> by sub-classing <code class="highlighter-rouge">scrapy.Spider</code> in the following way:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>class MgpSpider(scrapy.Spider):
-  name = 'mgpspider'
 
-  def __init__(self, root='202169', *args, **kargs):
-    super(MgpSpider, self).__init__(*args, **kargs)
-    self.start_urls = [
-        'https://www.genealogy.math.ndsu.nodak.edu/id.php?id=' + root
-      ]
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">MgpSpider</span><span class="p">(</span><span class="n">scrapy</span><span class="o">.</span><span class="n">Spider</span><span class="p">):</span>
+  <span class="n">name</span> <span class="o">=</span> <span class="s">'mgpspider'</span>
 
-  def url_to_id(self, url):
-    tokens = url.split('=')
-    if len(tokens) != 2:
-      return None
-    else:
-      return int(tokens[1])
+  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root</span><span class="o">=</span><span class="s">'202169'</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kargs</span><span class="p">):</span>
+    <span class="nb">super</span><span class="p">(</span><span class="n">MgpSpider</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kargs</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">start_urls</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s">'https://www.genealogy.math.ndsu.nodak.edu/id.php?id='</span> <span class="o">+</span> <span class="n">root</span>
+      <span class="p">]</span>
 
-  def parse(self, response):
-    item = ScholarItem()
-    item['name'] = response.css('h2::text').extract_first().strip()
-    item['id'] = self.url_to_id(response.url)
-    children_urls = response.css('table').re('id\.php\?id=\d*')
-    item['children'] = [self.url_to_id(url) for url in children_urls]
-    yield item
+  <span class="k">def</span> <span class="nf">url_to_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">):</span>
+    <span class="n">tokens</span> <span class="o">=</span> <span class="n">url</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">'='</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
+      <span class="k">return</span> <span class="bp">None</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">tokens</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 
-    for href in response.xpath('//div[@id="mainContent"]').re('id\.php\?id=\d*'):
-          if href not in children_urls:
-            yield scrapy.Request(response.urljoin(href), callback=self.parse)
-</code></pre>
-</div>
+  <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+    <span class="n">item</span> <span class="o">=</span> <span class="n">ScholarItem</span><span class="p">()</span>
+    <span class="n">item</span><span class="p">[</span><span class="s">'name'</span><span class="p">]</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">css</span><span class="p">(</span><span class="s">'h2::text'</span><span class="p">)</span><span class="o">.</span><span class="n">extract_first</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="n">item</span><span class="p">[</span><span class="s">'id'</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">url_to_id</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
+    <span class="n">children_urls</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">css</span><span class="p">(</span><span class="s">'table'</span><span class="p">)</span><span class="o">.</span><span class="n">re</span><span class="p">(</span><span class="s">'id</span><span class="err">\</span><span class="s">.php</span><span class="err">\</span><span class="s">?id=</span><span class="err">\</span><span class="s">d*'</span><span class="p">)</span>
+    <span class="n">item</span><span class="p">[</span><span class="s">'children'</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">url_to_id</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">for</span> <span class="n">url</span> <span class="ow">in</span> <span class="n">children_urls</span><span class="p">]</span>
+    <span class="k">yield</span> <span class="n">item</span>
+
+    <span class="k">for</span> <span class="n">href</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s">'//div[@id="mainContent"]'</span><span class="p">)</span><span class="o">.</span><span class="n">re</span><span class="p">(</span><span class="s">'id</span><span class="err">\</span><span class="s">.php</span><span class="err">\</span><span class="s">?id=</span><span class="err">\</span><span class="s">d*'</span><span class="p">):</span>
+          <span class="k">if</span> <span class="n">href</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">children_urls</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">urljoin</span><span class="p">(</span><span class="n">href</span><span class="p">),</span> <span class="n">callback</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">parse</span><span class="p">)</span></code></pre></figure>
+
 <p>Apart from the spider’s name, the three functions are as follow:</p>
 
 <ul>
@@ -128,14 +128,14 @@ to crawl my ancestry in the <a href="https://genealogy.math.ndsu.nodak.edu/">MGP
 </ul>
 
 <p>And that’s it, the result is then obtained by running:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>scrapy crawl mgpspider -o output.json
-</code></pre>
-</div>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">scrapy crawl mgpspider -o output.json</code></pre></figure>
+
 <p>Note that, to crawl the ancestry of my own advisor, I can simply pass its <a href="https://genealogy.math.ndsu.nodak.edu/">MGP</a>
 id number to the spider by running:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>scrapy crawl mgpspider -a root=86905 -o output.json
-</code></pre>
-</div>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">scrapy crawl mgpspider -a <span class="nv">root</span><span class="o">=</span>86905 -o output.json</code></pre></figure>
+
 <p>To leverage <code class="highlighter-rouge">igraph</code>’s nice layouts, the next step is loading the data in <code class="highlighter-rouge">R</code> by running:</p>
 
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">data</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">jsonlite</span><span class="o">::</span><span class="n">fromJSON</span><span class="p">(</span><span class="s2">"output.JSON"</span><span class="p">)</span></code></pre></figure>
@@ -150,7 +150,7 @@ adjacency matrix:</p>
 
 <p>Because the full ancestry is a rather messy graph, the following plot is obtained by 
 selecting the sub-graph corresponding to my neighborhood of order 18 using <code class="highlighter-rouge">igraph</code>’s <code class="highlighter-rouge">make_ego_graph</code> 
-function (i.e., ancestors with a degree of separation less than or equal to 18):
+function (i.e., selecting ancestors with a degree of separation less than or equal to 18):
 <img src="https://tvatter.github.io/images/2017-01-10-my-mathematics-genealogy/ancestry_graph-1.png" alt="plot of chunk ancestry_graph" /></p>
 
   </article>

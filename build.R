@@ -23,7 +23,7 @@ local({
     # you may want to adapt them to your own website
     knitr::opts_chunk$set(fig.path = sprintf('%s/', gsub('^.+/', '', d)))
     knitr::opts_knit$set(
-      base.dir = '~/Dropbox/blog/',
+      base.dir = '~/Dropbox/blog/images/',
       base.url = 'https://tvatter.github.io/'
     )
   }

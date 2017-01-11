@@ -6,8 +6,8 @@
 </description>
     <link>https://tvatter.github.io//</link>
     <atom:link href="https://tvatter.github.io//feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 10 Jan 2017 22:38:10 -0500</pubDate>
-    <lastBuildDate>Tue, 10 Jan 2017 22:38:10 -0500</lastBuildDate>
+    <pubDate>Wed, 11 Jan 2017 15:52:21 -0500</pubDate>
+    <lastBuildDate>Wed, 11 Jan 2017 15:52:21 -0500</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -69,7 +69,7 @@ to crawl my ancestry in the &lt;a href=&quot;https://genealogy.math.ndsu.nodak.e
   &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;__init__&lt;/code&gt; is the constructor, which defines the spider’s starting URL. Note that,
   by default, root is set as my &lt;a href=&quot;https://genealogy.math.ndsu.nodak.edu/&quot;&gt;MGP&lt;/a&gt; id number.&lt;/li&gt;
   &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;url_to_id&lt;/code&gt; converts an URL into an &lt;a href=&quot;https://genealogy.math.ndsu.nodak.edu/&quot;&gt;MGP&lt;/a&gt; id number.&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;parse&lt;/code&gt; has two roles:
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;parse&lt;/code&gt; does two things:
     &lt;ul&gt;
       &lt;li&gt;First, it scraps the current scholar and saves it using &lt;code class=&quot;highlighter-rouge&quot;&gt;scrapy&lt;/code&gt;’s &lt;code class=&quot;highlighter-rouge&quot;&gt;yield&lt;/code&gt;.&lt;/li&gt;
       &lt;li&gt;Second, it crawls the advisors of the scholar by recursively calling itself.&lt;/li&gt;
@@ -103,13 +103,110 @@ selecting the sub-graph corresponding to my neighborhood of order 18 using &lt;c
 function (i.e., selecting ancestors with a degree of separation less than or equal to 18):
 &lt;img src=&quot;https://tvatter.github.io/images/2017-01-10-my-mathematics-genealogy/ancestry_graph-1.png&quot; alt=&quot;plot of chunk ancestry_graph&quot; /&gt;&lt;/p&gt;
 </description>
-        <pubDate>Tue, 10 Jan 2017 22:38:09 -0500</pubDate>
+        <pubDate>Wed, 11 Jan 2017 15:50:49 -0500</pubDate>
         <link>https://tvatter.github.io//2017/01/my-mathematics-genealogy.html</link>
         <guid isPermaLink="true">https://tvatter.github.io//2017/01/my-mathematics-genealogy.html</guid>
         
         <category>python</category>
         
         <category>R</category>
+        
+        <category>scrapy</category>
+        
+        <category>igraph</category>
+        
+        <category>genealogy</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Set up Travis to embed R in a non-R project</title>
+        <description>&lt;p&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Continuous_integration&quot;&gt;Continuous integration&lt;/a&gt; 
+(&lt;a href=&quot;https://en.wikipedia.org/wiki/Continuous_integration&quot;&gt;CI&lt;/a&gt;) is great way of ensuring that code working in your 
+local environment will also work with other configurations. If, like me, you’re using &lt;a href=&quot;https://github.com/&quot;&gt;GitHub&lt;/a&gt;, then a neat solution to implement &lt;a href=&quot;https://en.wikipedia.org/wiki/Continuous_integration&quot;&gt;CI&lt;/a&gt; principles within a new project is &lt;a href=&quot;https://travis-ci.org&quot;&gt;Travis CI&lt;/a&gt;:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Travis CI is a hosted, distributed continuous integration service used to build and 
+test software projects hosted at GitHub.&lt;/p&gt;
+
+  &lt;p&gt;—&lt;cite&gt;Wikipedia&lt;/cite&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;However, it is well known that the default environment provided in &lt;a href=&quot;https://travis-ci.org&quot;&gt;Travis CI&lt;/a&gt; 
+is somewhat outdated. For instance, while implementing a &lt;a href=&quot;https://github.com/tvatter/vinecopulib&quot;&gt;C++ library for vine copulas&lt;/a&gt;, I 
+wanted to unit-test the C++ library by comparing its output to the &lt;a href=&quot;https://cran.r-project.org/web/packages/VineCopula/index.html&quot;&gt;VineCopula  R package&lt;/a&gt;, which 
+itself depends on the &lt;a href=&quot;https://cran.r-project.org/web/packages/copula/index.html&quot;&gt;copula R package&lt;/a&gt;. 
+Very naively, I then tried to write a &lt;code class=&quot;highlighter-rouge&quot;&gt;.travis.yml&lt;/code&gt; that started with:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;language: cpp
+matrix:
+  include:
+    - os: linux
+      dist: trusty
+      sudo: required
+
+install:
+  - sudo apt-get install r-base
+  - sudo apt-get install libgsl0-dev
+  - sudo Rscript -e &lt;span class=&quot;s1&quot;&gt;'install.packages(&quot;copula&quot;, repos=&quot;https://cran.rstudio.com/&quot;, lib=&quot;/usr/lib/R/library&quot;)'&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Note that &lt;code class=&quot;highlighter-rouge&quot;&gt;sudo apt-get install libgsl0-dev gsl-bin&lt;/code&gt; is used because the 
+the &lt;a href=&quot;https://cran.r-project.org/web/packages/copula/index.html&quot;&gt;copula R package&lt;/a&gt; depends on 
+the &lt;a href=&quot;https://cran.r-project.org/web/packages/gsl/index.html&quot;&gt;gsl R package&lt;/a&gt;, which requires an install 
+of the &lt;a href=&quot;http://www.gnu.org/software/gsl/&quot;&gt;Gnu Scientific Library&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Obviously, the &lt;code class=&quot;highlighter-rouge&quot;&gt;.travis.yml&lt;/code&gt; above didn’t work, as the &lt;a href=&quot;https://travis-ci.org&quot;&gt;Travis CI&lt;/a&gt; log showed:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-{,eval=F}&quot;&gt;Warning message: package ‘copula’ is not available (for R version 3.0.2) 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Version 3.0.2? In 2017? Alright, not a big deal, but since it took me a while to fix this issue, I though that 
+someone else might be interested in the solution, which is in fact extremely simple. 
+One just needs to start the &lt;code class=&quot;highlighter-rouge&quot;&gt;.travis.yml&lt;/code&gt; file with:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;language: cpp
+matrix:
+  include:
+    - os: linux
+      dist: trusty
+      sudo: required
+      
+before_install:
+  - sudo sh -c &lt;span class=&quot;s1&quot;&gt;'echo &quot;deb https://cloud.r-project.org/bin/linux/ubuntu trusty/&quot; &amp;gt;&amp;gt; /etc/apt/sources.list'&lt;/span&gt;
+  - sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
+  - sudo apt-get update
+
+install:
+  - sudo apt-get install r-base
+  - sudo apt-get install libgsl0-dev
+  - sudo Rscript -e &lt;span class=&quot;s1&quot;&gt;'install.packages(&quot;copula&quot;, repos=&quot;https://cran.rstudio.com/&quot;, lib=&quot;/usr/lib/R/library&quot;)'&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;To obtain the latest R packages, in &lt;code class=&quot;highlighter-rouge&quot;&gt;before_install&lt;/code&gt;, one does the following:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Add the R repository to the &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/apt/sources.list&lt;/code&gt; file&lt;/li&gt;
+  &lt;li&gt;Add the R key to Ubuntu’s key-ring since&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The Ubuntu archives on CRAN are signed with the key of “Michael Rutter &lt;a href=&quot;marutter@gmail.com&quot;&gt;marutter@gmail.com&lt;/a&gt;” with key ID E084DAB9. —&lt;cite&gt;&lt;a href=&quot;https://cran.r-project.org/bin/linux/ubuntu/&quot;&gt;https://cran.r-project.org/bin/linux/ubuntu/&lt;/a&gt;&lt;/cite&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Update the package lists using the repositories to get information on the newest versions of packages and their dependencies&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;And that’s it! Note that, for a C++ project embedding some R code, one might be interested in 
+the R packages &lt;a href=&quot;https://cran.r-project.org/web/packages/Rcpp/index.html&quot;&gt;Rcpp&lt;/a&gt; (for seamless R and C++ Integration) and
+&lt;a href=&quot;https://cran.r-project.org/web/packages/RInside/index.html&quot;&gt;RInside&lt;/a&gt; (to Embed R in C++ Applications), as we did 
+in &lt;a href=&quot;https://github.com/tvatter/vinecopulib&quot;&gt;vinecopulib&lt;/a&gt;.&lt;/p&gt;
+</description>
+        <pubDate>Wed, 11 Jan 2017 00:00:00 -0500</pubDate>
+        <link>https://tvatter.github.io//2017/01/set-up-travis-to-embed-r-in-non-r-project.html</link>
+        <guid isPermaLink="true">https://tvatter.github.io//2017/01/set-up-travis-to-embed-r-in-non-r-project.html</guid>
+        
+        <category>R</category>
+        
+        <category>travis</category>
         
         
       </item>

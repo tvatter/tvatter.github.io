@@ -58,7 +58,7 @@
 
   <header class="post-header">
     <h1 class="post-title">My Mathematics Genealogy</h1>
-    <p class="post-meta">Jan 10, 2017</p>
+    <p class="post-meta">Jan 11, 2017</p>
   </header>
 
   <article class="post-content">
@@ -119,7 +119,7 @@ to crawl my ancestry in the <a href="https://genealogy.math.ndsu.nodak.edu/">MGP
   <li><code class="highlighter-rouge">__init__</code> is the constructor, which defines the spider’s starting URL. Note that,
   by default, root is set as my <a href="https://genealogy.math.ndsu.nodak.edu/">MGP</a> id number.</li>
   <li><code class="highlighter-rouge">url_to_id</code> converts an URL into an <a href="https://genealogy.math.ndsu.nodak.edu/">MGP</a> id number.</li>
-  <li><code class="highlighter-rouge">parse</code> has two roles:
+  <li><code class="highlighter-rouge">parse</code> does two things:
     <ul>
       <li>First, it scraps the current scholar and saves it using <code class="highlighter-rouge">scrapy</code>’s <code class="highlighter-rouge">yield</code>.</li>
       <li>Second, it crawls the advisors of the scholar by recursively calling itself.</li>

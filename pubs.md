@@ -3,10 +3,11 @@ layout: page
 title: "Publications"
 ---
 
+* Coming soon
 
-## In progress 
+<!--## In progress 
 
-<!--Zinszer K, **Morrison K**, Verma A, Brownstein JS. 'Spatial determinants of Ebola virus disease risk for the West African epidemic.' Bulletin of the World Health Organization, *under review*. -->
+Zinszer K, **Morrison K**, Verma A, Brownstein JS. 'Spatial determinants of Ebola virus disease risk for the West African epidemic.' Bulletin of the World Health Organization, *under review*. 
 
 ## Published  
 

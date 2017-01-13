@@ -1,0 +1,39 @@
+# Dependencies
+markdown:         kramdown
+redcarpet:
+  extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "tables", "strikethrough", "superscript", "with_toc_data"]
+
+gems: ["jekyll-paginate"]
+
+#highlighter:      pygments
+
+excerpt_separator: <!--more-->  # you can specify your own separator
+
+# Permalinks
+permalink:        pretty
+#relative_permalinks: true
+
+# Setup
+title:            ''
+tagline:          'Thibault Vatter'
+description:	  '<a href="https://scholar.google.ch/citations?user=C1G2OxkAAAAJ&hl=en" target="_blank">Google Scholar</a>, <a href="https://github.com/tvatter">Github</a>, <a href="mailto:thibault.vatter@gmail.com">email</a>'
+url:              https://tvatter.github.io/
+baseurl:          '/'
+paginate:         5
+
+author:
+  name: 'Thibault Vatter'
+  email: thibault.vatter@gmail.com
+  github: tvatter
+  disqus_shortname: tvatter-github-io
+  bio: Statistics enthusiast
+  google_scholar: https://scholar.google.ch/citations?user=C1G2OxkAAAAJ&hl=en
+
+
+# Custom vars
+version:          2.1.0
+
+#github:
+#  repo:           https://github.com/kathryntmorrison
+
+

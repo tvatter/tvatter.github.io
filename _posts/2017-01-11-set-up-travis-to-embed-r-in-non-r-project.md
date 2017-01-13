@@ -41,7 +41,8 @@ the [gsl R package](https://cran.r-project.org/web/packages/gsl/index.html), whi
 of the [Gnu Scientific Library](http://www.gnu.org/software/gsl/).
 
 Obviously, the `.travis.yml` above didn't work, as the [Travis CI](https://travis-ci.org) log showed:
-```{,eval=F}
+
+```bash
 Warning message: package ‘copula’ is not available (for R version 3.0.2) 
 ```
 Version 3.0.2? In 2017? Alright, not a big deal, but since it took me a while to fix this issue, I though that 

@@ -4,7 +4,7 @@
  <title></title>
  <link href="https://tvatter.github.io//atom.xml" rel="self"/>
  <link href="https://tvatter.github.io//"/>
- <updated>2017-01-13T15:48:04-05:00</updated>
+ <updated>2017-01-13T15:49:37-05:00</updated>
  <id>https://tvatter.github.io/</id>
  <author>
    <name>Thibault Vatter</name>
@@ -53,8 +53,10 @@ the &lt;a href=&quot;https://cran.r-project.org/web/packages/gsl/index.html&quot
 of the &lt;a href=&quot;http://www.gnu.org/software/gsl/&quot;&gt;Gnu Scientific Library&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Obviously, the &lt;code class=&quot;highlighter-rouge&quot;&gt;.travis.yml&lt;/code&gt; above didn’t work, as the &lt;a href=&quot;https://travis-ci.org&quot;&gt;Travis CI&lt;/a&gt; log showed:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-{,eval=F}&quot;&gt;Warning message: package ‘copula’ is not available (for R version 3.0.2) 
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Warning message: package ‘copula’ is not available &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;R version 3.0.2&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 &lt;p&gt;Version 3.0.2? In 2017? Alright, not a big deal, but since it took me a while to fix this issue, I though that 
 someone else might be interested in the solution, which is in fact extremely simple. 
 One just needs to start the &lt;code class=&quot;highlighter-rouge&quot;&gt;.travis.yml&lt;/code&gt; file with:&lt;/p&gt;

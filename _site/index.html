@@ -221,8 +221,10 @@ the <a href="https://cran.r-project.org/web/packages/gsl/index.html">gsl R packa
 of the <a href="http://www.gnu.org/software/gsl/">Gnu Scientific Library</a>.</p>
 
 <p>Obviously, the <code class="highlighter-rouge">.travis.yml</code> above didn’t work, as the <a href="https://travis-ci.org">Travis CI</a> log showed:</p>
-<pre><code class="language-{,eval=F}">Warning message: package ‘copula’ is not available (for R version 3.0.2) 
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>Warning message: package ‘copula’ is not available <span class="o">(</span><span class="k">for </span>R version 3.0.2<span class="o">)</span> 
 </code></pre>
+</div>
 <p>Version 3.0.2? In 2017? Alright, not a big deal, but since it took me a while to fix this issue, I though that 
 someone else might be interested in the solution, which is in fact extremely simple. 
 One just needs to start the <code class="highlighter-rouge">.travis.yml</code> file with:</p>

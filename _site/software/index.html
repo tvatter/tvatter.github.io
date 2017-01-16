@@ -11,7 +11,7 @@
 
   <title>
     
-    Software &middot; 
+    Open-source Software &middot; 
     
   </title>
 
@@ -71,12 +71,6 @@
       
         
           
-            <a class="sidebar-nav-item" href="/CV/">Curriculum Vitae</a>
-          
-        
-      
-        
-          
             <a class="sidebar-nav-item" href="/about/">About</a>
           
         
@@ -101,7 +95,7 @@
       
         
           
-            <a class="sidebar-nav-item active" href="/software/">Software</a>
+            <a class="sidebar-nav-item active" href="/software/">Open-source Software</a>
           
         
       
@@ -161,23 +155,47 @@
 	</div>
 </div>
 
-<!--<div class="footer">
-        <hr>
-        <p>&copy; Hadley Wickham. Powered by <a href="http://jekyllrb.com/">jekyll</a>,
-          <a href="http://yihui.name/knitr/">knitr</a>, and
-          <a href="http://johnmacfarlane.net/pandoc/">pandoc</a>. Source
-          available on <a href="https://github.com/hadley/adv-r/">github</a>.
-        </p>
-      </div>
--->
-
-
     <div class="content container">
       	<div class="page">
-  <h1 class="page-title">Software</h1>
-  <ul>
-  <li>Coming soon</li>
-</ul>
+  <h1 class="page-title">Open-source Software</h1>
+  <p>I write R/C++/Python/MATLAB software, mainly for statistical computing, and you can find an overview of my projects below.</p>
+
+<hr />
+
+<h2 id="r">R</h2>
+
+<h4 id="gamcopula-generalized-additive-models-for-bivariate-and-vine-copulas-"><a href="https://github.com/tvatter/gamCopula">gamCopula: generalized additive models for bivariate and vine copulas</a> <a href="https://cran.r-project.org/package=gamCopula"><img src="http://www.r-pkg.org/badges/version/gamCopula" alt="CRAN " /></a></h4>
+
+<p>Implementation of various inference and simulation tools to apply generalized additive models to bivariate dependence structures and non-simplified vine copulas. See <a href="http://www.sciencedirect.com/science/article/pii/S0047259X15001633">Vatter and Chavez-Demoulin, 2015</a> and <a href="https://arxiv.org/abs/1608.01593">Vatter and Nagler, 2016</a>.</p>
+
+<h4 id="vinecopula-statistical-inference-of-vine-copulas-"><a href="https://github.com/tnagler/VineCopula">VineCopula: statistical inference of vine copulas</a> <a href="https://cran.r-project.org/package=VineCopula"><img src="http://www.r-pkg.org/badges/version/VineCopula" alt="CRAN " /></a></h4>
+
+<p>Provides tools for the statistical analysis of vine copula models. The package includes tools for parameter estimation, model selection, simulation, goodness-of-fit tests, and visualization. Tools for estimation, selection and exploratory data analysis of bivariate copula models are also provided.</p>
+
+<hr />
+
+<h2 id="c">C++</h2>
+
+<h4 id="vinecopulib-a-c-library-for-vine-copulas-"><a href="https://github.com/tvatter/vinecopulib">vinecopulib: a C++ library for vine copulas</a> <a href="https://travis-ci.org/tvatter/vinecopulib"><img src="https://travis-ci.org/tvatter/vinecopulib.svg?branch=master" alt="Travis CI " /></a></h4>
+
+<p>A C++ implementation of inference algorithms for bivariate and vine copula models. Under construction.</p>
+
+<hr />
+
+<h2 id="python">Python</h2>
+
+<h4 id="mgpancestry-scraping-the-mathematical-genealogy-project-for-a-scholars-ancestry"><a href="https://github.com/tvatter/mgpancestry">mgpancestry: scraping the mathematical genealogy project for a scholar’s ancestry.</a></h4>
+
+<p>A small scrapy project to scrap the <a href="https://genealogy.math.ndsu.nodak.edu/">mathematical genealogy project</a> for a scholar’s ancestry. See <a href="https://tvatter.github.io/2017/01/10/my-mathematics-genealogy/">the related blog post</a> for more details.</p>
+
+<hr />
+
+<h2 id="matlab">MATLAB</h2>
+
+<h4 id="intradaysst-companion-code-of-the-paper-by-vatter-et-al-2015"><a href="https://github.com/tvatter/intradaySST">intradaySST: companion code of the paper by Vatter et al. (2015)</a></h4>
+
+<p>This is the code which accompanies the paper <a href="http://www.mdpi.com/2225-1146/3/4/864/pdf">Non-Parametric Estimation of Intraday Spot Volatility: Disentangling Instantaneous Trend and Seasonality</a>
+by myself, Hau-Tieng Wu, Valérie Chavez-Demoulin and Bin Yu. It provides functions to clean intraday FX prices and apply the Synchrosqueezing transform to extract the trend and seasonality from the returns volatilities.</p>
 
 </div>
 

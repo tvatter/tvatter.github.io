@@ -1,9 +1,9 @@
 ---
 layout: page
-title: "Open-source Software"
+title: "Software"
 ---
 
-I write R/C++/Python/MATLAB software, mainly for statistical computing, and you can find an overview of my projects below.
+I write R/C++/Python/MATLAB software, mainly for statistical computing, and you can find an overview of my open-source projects below.
 
 -----
 

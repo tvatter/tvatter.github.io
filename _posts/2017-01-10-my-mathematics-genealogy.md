@@ -3,6 +3,7 @@ layout: post
 title:  My Mathematics Genealogy
 date: 2017-01-10
 published: true
+comments: true
 tags: [python, R, scrapy, igraph, genealogy]
 ---
 

@@ -3,6 +3,7 @@ layout: post
 title:  Set up Travis to embed R in a non-R project
 date: 2017-01-11
 published: true
+comments: true
 tags: [R, travis]
 ---
 

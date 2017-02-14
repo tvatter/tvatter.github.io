@@ -14,7 +14,7 @@ permalink:        pretty
 #relative_permalinks: true
 
 # Setup
-title:            'A blog about statistics and data analysis'
+title:            ''
 tagline:          'Thibault Vatter'
 description:	  '<a href="https://scholar.google.ch/citations?user=C1G2OxkAAAAJ&hl=en" target="_blank">Google Scholar</a>, <a href="https://github.com/tvatter">Github</a>, <a href="mailto:thibault.vatter@gmail.com">email</a>'
 url:              https://tvatter.github.io/
@@ -28,10 +28,6 @@ author:
   disqus_shortname: tvatter-github-io
   bio: Statistics enthusiast
   google_scholar: https://scholar.google.ch/citations?user=C1G2OxkAAAAJ&hl=en
-
-# Comments
-comments: true
-disqus: tvatter-github-io
 
 
 

@@ -1,23 +1,17 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-
- <title></title>
- <link href="https://tvatter.github.io//atom.xml" rel="self"/>
- <link href="https://tvatter.github.io//"/>
- <updated>2017-02-14T10:43:58-05:00</updated>
- <id>https://tvatter.github.io/</id>
- <author>
-   <name>Thibault Vatter</name>
-   <email>thibault.vatter@gmail.com</email>
- </author>
-
- 
- <entry>
-   <title>Set up Travis to embed R in a non-R project</title>
-   <link href="https://tvatter.github.io//2017/01/11/set-up-travis-to-embed-r-in-non-r-project/"/>
-   <updated>2017-01-11T00:00:00-05:00</updated>
-   <id>https://tvatter.github.io//2017/01/11/set-up-travis-to-embed-r-in-non-r-project</id>
-   <content type="html">&lt;p&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Continuous_integration&quot;&gt;Continuous integration&lt;/a&gt; 
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title></title>
+    <description>&lt;a href=&quot;https://scholar.google.ch/citations?user=C1G2OxkAAAAJ&amp;hl=en&quot; target=&quot;_blank&quot;&gt;Google Scholar&lt;/a&gt;, &lt;a href=&quot;https://github.com/tvatter&quot;&gt;Github&lt;/a&gt;, &lt;a href=&quot;mailto:thibault.vatter@gmail.com&quot;&gt;email&lt;/a&gt;</description>
+    <link>https://tvatter.github.io///</link>
+    <atom:link href="https://tvatter.github.io///feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Tue, 14 Feb 2017 10:43:58 -0500</pubDate>
+    <lastBuildDate>Tue, 14 Feb 2017 10:43:58 -0500</lastBuildDate>
+    <generator>Jekyll v3.3.1</generator>
+    
+      <item>
+        <title>Set up Travis to embed R in a non-R project</title>
+        <description>&lt;p&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Continuous_integration&quot;&gt;Continuous integration&lt;/a&gt; 
 (&lt;a href=&quot;https://en.wikipedia.org/wiki/Continuous_integration&quot;&gt;CI&lt;/a&gt;) is great way of ensuring that code working in your 
 local environment will also work with other configurations. If, like me, you’re using &lt;a href=&quot;https://github.com/&quot;&gt;GitHub&lt;/a&gt;, then a neat solution to implement &lt;a href=&quot;https://en.wikipedia.org/wiki/Continuous_integration&quot;&gt;CI&lt;/a&gt; principles within a new project is &lt;a href=&quot;https://travis-ci.org&quot;&gt;Travis CI&lt;/a&gt;:&lt;/p&gt;
 
@@ -98,15 +92,21 @@ install:
 the R packages &lt;a href=&quot;https://cran.r-project.org/web/packages/Rcpp/index.html&quot;&gt;Rcpp&lt;/a&gt; (for seamless R and C++ Integration) and
 &lt;a href=&quot;https://cran.r-project.org/web/packages/RInside/index.html&quot;&gt;RInside&lt;/a&gt; (to Embed R in C++ Applications), as we did 
 in &lt;a href=&quot;https://github.com/tvatter/vinecopulib&quot;&gt;vinecopulib&lt;/a&gt;.&lt;/p&gt;
-</content>
- </entry>
- 
- <entry>
-   <title>My Mathematics Genealogy</title>
-   <link href="https://tvatter.github.io//2017/01/10/my-mathematics-genealogy/"/>
-   <updated>2017-01-10T00:00:00-05:00</updated>
-   <id>https://tvatter.github.io//2017/01/10/my-mathematics-genealogy</id>
-   <content type="html">&lt;p&gt;OK, so the first post on this blog is about my (mathematics) genealogy, how narcissistic of me. 
+</description>
+        <pubDate>Wed, 11 Jan 2017 00:00:00 -0500</pubDate>
+        <link>https://tvatter.github.io///2017/01/11/set-up-travis-to-embed-r-in-non-r-project/</link>
+        <guid isPermaLink="true">https://tvatter.github.io///2017/01/11/set-up-travis-to-embed-r-in-non-r-project/</guid>
+        
+        <category>R</category>
+        
+        <category>travis</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>My Mathematics Genealogy</title>
+        <description>&lt;p&gt;OK, so the first post on this blog is about my (mathematics) genealogy, how narcissistic of me. 
 Anyway, I was looking at various ways to crawl and harvest data from websites (i.e., web crawling and scraping), and I thought that it could be fun to learn about it by extracting my ancestry from the 
 &lt;a href=&quot;https://genealogy.math.ndsu.nodak.edu/&quot;&gt;Mathematics Genealogy Project&lt;/a&gt; (thereafter &lt;a href=&quot;https://genealogy.math.ndsu.nodak.edu/&quot;&gt;MGP&lt;/a&gt;).&lt;/p&gt;
 
@@ -203,8 +203,23 @@ adjacency matrix:&lt;/p&gt;
 selecting the sub-graph corresponding to my neighborhood of order 18 using &lt;code class=&quot;highlighter-rouge&quot;&gt;igraph&lt;/code&gt;’s &lt;code class=&quot;highlighter-rouge&quot;&gt;make_ego_graph&lt;/code&gt; 
 function (i.e., selecting ancestors with a degree of separation less than or equal to 18):
 &lt;img src=&quot;/figure/source/my-mathematics-genealogy/2017-01-10-my-mathematics-genealogy/ancestry_graph-1.png&quot; alt=&quot;plot of chunk ancestry_graph&quot; /&gt;&lt;/p&gt;
-</content>
- </entry>
- 
-
-</feed>
+</description>
+        <pubDate>Tue, 10 Jan 2017 00:00:00 -0500</pubDate>
+        <link>https://tvatter.github.io///2017/01/10/my-mathematics-genealogy/</link>
+        <guid isPermaLink="true">https://tvatter.github.io///2017/01/10/my-mathematics-genealogy/</guid>
+        
+        <category>python</category>
+        
+        <category>R</category>
+        
+        <category>scrapy</category>
+        
+        <category>igraph</category>
+        
+        <category>genealogy</category>
+        
+        
+      </item>
+    
+  </channel>
+</rss>

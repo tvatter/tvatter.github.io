@@ -3,53 +3,13 @@ layout: default
 title: Home
 ---
 
-<!--<h1> Hi! I'm Thibault, </h1>
+<h1> Hi! I'm Thibault, </h1>
 <p>
     a statistician and data enthusiast currently living in New York City. On this website, you can find         informations about <a href = "https://tvatter.github.io/about/">me</a>, 
     <a href = "https://tvatter.github.io/publications/">my publications</a> and 
     <a href = "https://tvatter.github.io/software/">the open-source software that I contribute to</a>, as       well as (hopefully) interesting blog posts.
 </p>
-<hr>-->
-
-<div class="posts">
-  {% for post in paginator.posts %}
-  <div class="post">
-    <h1 class="post-title">
-      <a href="{{ post.url }}">
-        {{ post.title }}
-      </a>
-    </h1>
-
-    <span class="post-date">{{ post.date | date_to_string }}</span>
-    <hr>
-
-    {{ post.excerpt }}
-    <a href="{{ post.url }}" class="read-more-btn"> <b>Read more &#187;</b> </a>
-  </div>
-  {% endfor %}
-</div>
-
-<div class="pagination">
-  {% if paginator.next_page %}
-    <a class="pagination-item older" href="{{ site.baseurl }}page{{paginator.next_page}}">Previous</a>
-  {% else %}
-    <span class="pagination-item older">Previous</span>
-  {% endif %}
-  {% if paginator.previous_page %}
-    {% if paginator.page == 2 %}
-      <a class="pagination-item newer" href="{{ site.baseurl }}">Next</a>
-    {% else %}
-      <a class="pagination-item newer" href="{{ site.baseurl }}page{{paginator.previous_page}}">Next</a>
-    {% endif %}
-  {% else %}
-    <span class="pagination-item newer">Next</span>
-  {% endif %}
-</div>
-
-<script type="text/javascript"
-    src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-
+<hr>
 
 <!--<ul class="toc">
   {% include package-nav.html %}

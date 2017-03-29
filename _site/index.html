@@ -168,6 +168,78 @@
   
   <div class="post">
     <h1 class="post-title">
+      <a href="/2017/03/29/another-look-at-confounding/">
+        Another look at confounding
+      </a>
+    </h1>
+
+    <span class="post-date">29 Mar 2017</span>
+    <hr>
+
+    <p>Assume that one is interested in studying the relationship between two random 
+variables <script type="math/tex">X</script> and <script type="math/tex">Y</script>. Simply put, a variable <script type="math/tex">Z</script> is said to be confonfounding 
+if it explains some (or all) of the dependence between <script type="math/tex">X</script> and <script type="math/tex">Y</script>. For instance, 
+if <script type="math/tex">Z</script> is such that <script type="math/tex">X \perp Y \mid Z</script>, then one says that <script type="math/tex">Z</script> is a confounding 
+variable for the relationship between <script type="math/tex">X</script> and <script type="math/tex">Y</script>. This situation is illustrated 
+in the following graphical model:</p>
+
+<p><img src="/figure/source/another-look-at-confounding/2017-03-29-another-look-at-confounding/unnamed-chunk-1-1.png" alt="plot of chunk unnamed-chunk-1" /></p>
+
+<p>For instance, with <script type="math/tex">X\mid Z \sim N(0,1)</script>, <script type="math/tex">Y \mid Z \sim N(0,1)</script>, and 
+<script type="math/tex">Z \sim N(0,2)</script>, we have that <script type="math/tex">corr \left(X,Y \right)=0.8</script>, namely <script type="math/tex">X</script> and <script type="math/tex">Y</script> are correlated. 
+However, <script type="math/tex">corr \left(X,Z \right)=\sqrt{0.8}</script> and <script type="math/tex">corr \left(Y,Z \right)=\sqrt{0.8}</script>, which imply that 
+the there is no partial correlation between <script type="math/tex">X</script> and <script type="math/tex">Y</script> when controlling for the effect of <script type="math/tex">Z</script>, that is</p>
+
+<script type="math/tex; mode=display">corr \left(X,Y;Z \right)= \frac{corr \left(X,Y \right)-corr \left(X,Z \right)corr \left(Y,Z \right)}{\sqrt{1-corr \left(X,Z \right)^2}\sqrt{1-corr \left(X,Y \right)^2}} = 0.</script>
+
+<p>This can be seen in the following two figures, where <script type="math/tex">X</script> and <script type="math/tex">Y</script> are correlated, 
+but <script type="math/tex">X-Z</script> and <script type="math/tex">X-Y</script> are not:</p>
+
+<p><img src="/figure/source/another-look-at-confounding/2017-03-29-another-look-at-confounding/unnamed-chunk-2-1.png" alt="plot of chunk unnamed-chunk-2" /></p>
+
+<p>As a next example, consider the conditional correlation between the random variables <script type="math/tex">X</script> and <script type="math/tex">Y</script> given <script type="math/tex">X</script>, which is defined by</p>
+
+<script type="math/tex; mode=display">corr \left(X,Y\mid Z \right) = 
+\frac{E \left[\left\{ X-E \left(X\mid Z \right)\right\}\left\{ Y-E \left(Y\mid Z \right)\right\}\mid Z \right]}{ \left( E \left[\left\{ X-E \left(X\mid Z \right)\right\}^2\mid Z \right] E \left[\left\{ Y-E \left(Y\mid Z \right)\right\}^2\mid Z \right] \right)^{1/2}}</script>
+
+<p>For instance, when <script type="math/tex">X =  A + BZ</script> and <script type="math/tex">Y =  C + DZ</script> where <script type="math/tex">A,B,C,D</script> are independently distributed random variables, then</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+corr \left(X,Y\mid Z \right)=  
+    \frac{cov \left(A,C \right) + \left\{cov \left(A,D \right)+cov \left(B,C \right) \right\} Z + cov \left(B,D \right)Z^2}{\begin{aligned}
+ \Bigg[ &\big\{var \left(A \right) + 2\, cov \left(A,B \right)  Z + var \left(B \right)Z^2\big\}\\
+           & \cdot \big\{var \left(C \right) + 2\, cov \left(C,D \right)  Z + var \left(D \right)Z^2\big\} \Bigg]^{1/2}
+\end{aligned}}. %]]></script>
+
+<p>Furthermore, if <script type="math/tex">A,B,C,D</script> have equal variance and correlation <script type="math/tex">\rho</script>, we have that</p>
+
+<script type="math/tex; mode=display">corr \left(X,Y\mid Z \right)=\frac{\rho \left( 1 + Z \right)^2}{
+    \left( 1 + 2\, \rho Z \, + Z^2 \right)}.</script>
+
+<p>In this example, it is clear that the conditional correlation depends on the value of the conditioning variable <script type="math/tex">Z</script> explicitly. Hence, it is in general not equal to the partial correlation.</p>
+
+<p>To study how <script type="math/tex">Z</script> can act as a confounding variable in this context, it is interesting to start from 
+another example. Consider <script type="math/tex">X,Y,Z \sim N(0,1)</script> marginally,
+but such that</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+corr \left(X,Y\mid Z \right)= \begin{cases}
+-0.5 &\mbox{if } Z \leq 0 \\
+0.5 &\mbox{otherwise}
+\end{cases}. %]]></script>
+
+<p>Then, because <script type="math/tex">P(X \leq 0) = 1/2</script>, we have that <script type="math/tex">corr \left(X,Y\right) = 0</script>. In other words,
+without looking at the effect of <script type="math/tex">Z</script>, one would wrongly conclude that <script type="math/tex">X</script> and <script type="math/tex">Y</script> are uncorrelated, as observed in the following figure:</p>
+
+<p><img src="/figure/source/another-look-at-confounding/2017-03-29-another-look-at-confounding/unnamed-chunk-3-1.png" alt="plot of chunk unnamed-chunk-3" /></p>
+
+<p>To summarize, rather than explaining some (or all) of the dependence, it is also worth looking at confounding variables as masking relationships!</p>
+
+    <a href="/2017/03/29/another-look-at-confounding/" class="read-more-btn"> <b>Read more &#187;</b> </a>
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
       <a href="/2017/01/11/set-up-travis-to-embed-r-in-non-r-project/">
         Set up Travis to embed R in a non-R project
       </a>

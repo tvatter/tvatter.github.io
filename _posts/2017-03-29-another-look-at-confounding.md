@@ -2,7 +2,7 @@
 layout: post
 title: Another look at confounding
 date: 2017-03-29
-published: yes
+published: no
 comments: yes
 tags: [confounding, partial correlation, conditional correlation]
 ---

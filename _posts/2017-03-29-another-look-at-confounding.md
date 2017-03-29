@@ -5,7 +5,7 @@ layout: post
 output:
   html_document: default
   pdf_document: default
-published: yes
+published: no
 tags:
 - confounding
 - partial correlation

@@ -14,7 +14,7 @@
     {% endif %}
   </title>
   
-  <script type="text/x-mathjax-config">
+ <!--  <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
     TeX: {
       equationNumbers: {
@@ -30,7 +30,13 @@
 </script>
 <script type="text/javascript"
     src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
+</script>-->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script><script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
 
   <!-- CSS, to change font you also need to update font family in public/css/hyde.css-->
   <link rel="stylesheet" href="{{ site.baseurl }}public/css/poole.css">

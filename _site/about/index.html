@@ -15,7 +15,7 @@
     
   </title>
   
-  <script type="text/x-mathjax-config">
+ <!--  <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
     TeX: {
       equationNumbers: {
@@ -31,7 +31,13 @@
 </script>
 <script type="text/javascript"
     src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
+</script>-->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script><script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
 
   <!-- CSS, to change font you also need to update font family in public/css/hyde.css-->
   <link rel="stylesheet" href="/public/css/poole.css">
@@ -175,6 +181,9 @@
   <hr />
 
 <h2 id="im-thibault-vatter-a-statistician-and-data-enthusiast">I’m Thibault Vatter, a statistician and data enthusiast</h2>
+
+<p>Trying out math stuff:
+<script type="math/tex">\frac{1}{n}\sum^n_{i=1} X_i \longrightarrow \mu</script></p>
 
 <p>I recently finished my PhD working with prof. <a href="https://scholar.google.com/citations?user=ckwRJWAAAAAJ&amp;hl=fr">Valérie Chavez-Demoulin</a> on <a href="https://serval.unil.ch/resource/serval:BIB_E1AD7D2DCF57.P001/REF">generalized additive models for multivariate distributions</a> at the Faculty of Business and Economics, University of Lausanne, Switzerland. After a brief transition as a PostDoc with prof. <a href="http://stat.epfl.ch/">Anthony C. Davison</a> and <a href="https://scholar.google.com/citations?user=hubUU3AAAAAJ&amp;hl=en">Suzanne de Treville</a>, I recently moved to New York with my wife, <a href="https://www.linkedin.com/in/fanny-vatter-31886480">Fanny Vatter</a>, who accepted a position at Weill Cornell Medical College. As for me, I am now working as a PostDoc with prof. <a href="http://www.stat.columbia.edu/~rdavis/">Richard Davis</a> at Columbia University.</p>
 

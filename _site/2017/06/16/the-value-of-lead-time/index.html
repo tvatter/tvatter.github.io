@@ -171,7 +171,10 @@ an interesting idea about valuing lead time based on financial mathematics relat
 to option pricing. In the <a href="https://en.wikipedia.org/wiki/Newsvendor_model">standard newsvendor model</a>, the profits of the firm at delivery time <script type="math/tex">T</script> for an order of <script type="math/tex">Q</script> units are</p>
 
 <p>\[
-\Pi_T = p \min(D_T,Q) - c Q + s \max(Q-D_T, 0) = (p-c) Q - (p-s) \max(Q-D_T, 0),
+\begin{align}
+\Pi_T &amp;= p \min(D_T,Q) - c Q + s \max(Q-D_T, 0) \\
+&amp;= (p-c) Q - (p-s) \max(Q-D_T, 0),
+\end{align}
 \]</p>
 
 <p>where <script type="math/tex">D_T</script> is the demand, <script type="math/tex">p</script> is the selling price of the product, <script type="math/tex">c</script> its cost and <script type="math/tex">s</script> its salvage value. The usual solution, i.e. the profit-maximizing order quantity is given by <script type="math/tex">Q = F^{-1}(\alpha)</script>,

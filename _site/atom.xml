@@ -4,7 +4,7 @@
  <title></title>
  <link href="https://tvatter.github.io//atom.xml" rel="self"/>
  <link href="https://tvatter.github.io//"/>
- <updated>2017-06-16T12:45:11-04:00</updated>
+ <updated>2017-06-16T12:47:26-04:00</updated>
  <id>https://tvatter.github.io/</id>
  <author>
    <name>Thibault Vatter</name>
@@ -22,7 +22,10 @@ an interesting idea about valuing lead time based on financial mathematics relat
 to option pricing. In the &lt;a href=&quot;https://en.wikipedia.org/wiki/Newsvendor_model&quot;&gt;standard newsvendor model&lt;/a&gt;, the profits of the firm at delivery time &lt;script type=&quot;math/tex&quot;&gt;T&lt;/script&gt; for an order of &lt;script type=&quot;math/tex&quot;&gt;Q&lt;/script&gt; units are&lt;/p&gt;
 
 &lt;p&gt;\[
-\Pi_T = p \min(D_T,Q) - c Q + s \max(Q-D_T, 0) = (p-c) Q - (p-s) \max(Q-D_T, 0),
+\begin{align}
+\Pi_T &amp;amp;= p \min(D_T,Q) - c Q + s \max(Q-D_T, 0) \\
+&amp;amp;= (p-c) Q - (p-s) \max(Q-D_T, 0),
+\end{align}
 \]&lt;/p&gt;
 
 &lt;p&gt;where &lt;script type=&quot;math/tex&quot;&gt;D_T&lt;/script&gt; is the demand, &lt;script type=&quot;math/tex&quot;&gt;p&lt;/script&gt; is the selling price of the product, &lt;script type=&quot;math/tex&quot;&gt;c&lt;/script&gt; its cost and &lt;script type=&quot;math/tex&quot;&gt;s&lt;/script&gt; its salvage value. The usual solution, i.e. the profit-maximizing order quantity is given by &lt;script type=&quot;math/tex&quot;&gt;Q = F^{-1}(\alpha)&lt;/script&gt;,

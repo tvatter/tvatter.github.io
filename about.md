@@ -8,9 +8,9 @@ layout: page
 
 ## I'm Thibault Vatter, a statistician and data enthusiast
 
-I recently finished my PhD working with prof. [Valérie Chavez-Demoulin](https://scholar.google.com/citations?user=ckwRJWAAAAAJ&hl=fr) on [generalized additive models for multivariate distributions](https://serval.unil.ch/resource/serval:BIB_E1AD7D2DCF57.P001/REF) at the Faculty of Business and Economics, University of Lausanne, Switzerland. After a brief transition phase as a PostDoc with prof. [Anthony C. Davison](http://stat.epfl.ch/) and [Suzanne de Treville](https://scholar.google.com/citations?user=hubUU3AAAAAJ&hl=en), I recently moved to New York with my wife, [Fanny Vatter](https://www.linkedin.com/in/fanny-vatter-31886480), who accepted a position at Weill Cornell Medical College.
+I recently finished my PhD working with prof. [Valérie Chavez-Demoulin](https://scholar.google.com/citations?user=ckwRJWAAAAAJ&hl=fr) on [generalized additive models for multivariate distributions](https://serval.unil.ch/resource/serval:BIB_E1AD7D2DCF57.P001/REF) at the Faculty of Business and Economics, University of Lausanne, Switzerland. After a brief transition as a PostDoc with prof. [Anthony C. Davison](http://stat.epfl.ch/) and [Suzanne de Treville](https://scholar.google.com/citations?user=hubUU3AAAAAJ&hl=en), I recently moved to New York with my wife, [Fanny Vatter](https://www.linkedin.com/in/fanny-vatter-31886480), who accepted a position at Weill Cornell Medical College. As for me, I am now working as a PostDoc with prof. [Richard Davis](http://www.stat.columbia.edu/~rdavis/) at Columbia University.
 
-* My industry [resume](/img/resume_vatter_february2017.pdf)
+* My industry [resume](/img/resume_vatter_june2017.pdf)
 * My academic [CV](/img/cv_vatter_january2017.pdf)
 
 ----------

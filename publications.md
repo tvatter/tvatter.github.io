@@ -31,8 +31,8 @@ Ackerer, D. and **Vatter, T.** (2016)
 
 ## In preparation
 
-**Vatter, T.** and Ackerer (2017)  
-D. Vine Forests: A Copula-Based Solution to Estimating Equations
+**Vatter, T.** and Ackerer D. (2017)  
+Vine Forests: A Copula-Based Solution to Estimating Equations
 
 De Treville, S.,  Hoffstetter, J. and **Vatter, T.** (2017)  
 Using Point-of-Sale Data To Improve Shelf Replenishment Performance

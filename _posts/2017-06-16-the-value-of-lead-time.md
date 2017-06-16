@@ -48,7 +48,7 @@ As such, the cost $$c_s$$ making the firm indifferent between producing at time 
 c_s = p - (p-c_l) Q_l + (p-s) P(1,0,T,Q_l).
 \\]
 
-In the [shiny app](https://shiny.rstudio.com/), we assume that $$T=1$$ and show the cost differential frontier, namely $$(c_s-c_l)/c_s$$ as a function of $$t_l \in [0,T]$$:
+In the [shiny app](https://shiny.rstudio.com/) below (see [https://tvatter.shinyapps.io/shinycdf/](https://tvatter.shinyapps.io/shinycdf/) for the full screen version), we assume that $$T=1$$ and show the cost differential frontier, namely $$(c_s-c_l)/c_s$$ as a function of $$t_l \in [0,T]$$:
 
 <iframe src="https://tvatter.shinyapps.io/shinycdf/" width="100%" height="600" style="border: none;"></iframe>
 

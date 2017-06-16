@@ -4,7 +4,7 @@
  <title></title>
  <link href="https://tvatter.github.io//atom.xml" rel="self"/>
  <link href="https://tvatter.github.io//"/>
- <updated>2017-06-16T12:47:26-04:00</updated>
+ <updated>2017-06-16T12:48:49-04:00</updated>
  <id>https://tvatter.github.io/</id>
  <author>
    <name>Thibault Vatter</name>
@@ -62,7 +62,7 @@ As such, the cost &lt;script type=&quot;math/tex&quot;&gt;c_s&lt;/script&gt; mak
 c_s = p - (p-c_l) Q_l + (p-s) P(1,0,T,Q_l).
 \]&lt;/p&gt;
 
-&lt;p&gt;In the &lt;a href=&quot;https://shiny.rstudio.com/&quot;&gt;shiny app&lt;/a&gt;, we assume that &lt;script type=&quot;math/tex&quot;&gt;T=1&lt;/script&gt; and show the cost differential frontier, namely &lt;script type=&quot;math/tex&quot;&gt;(c_s-c_l)/c_s&lt;/script&gt; as a function of &lt;script type=&quot;math/tex&quot;&gt;t_l \in [0,T]&lt;/script&gt;:&lt;/p&gt;
+&lt;p&gt;In the &lt;a href=&quot;https://shiny.rstudio.com/&quot;&gt;shiny app&lt;/a&gt; below (see &lt;a href=&quot;https://tvatter.shinyapps.io/shinycdf/&quot;&gt;https://tvatter.shinyapps.io/shinycdf/&lt;/a&gt; for the full screen version), we assume that &lt;script type=&quot;math/tex&quot;&gt;T=1&lt;/script&gt; and show the cost differential frontier, namely &lt;script type=&quot;math/tex&quot;&gt;(c_s-c_l)/c_s&lt;/script&gt; as a function of &lt;script type=&quot;math/tex&quot;&gt;t_l \in [0,T]&lt;/script&gt;:&lt;/p&gt;
 
 &lt;iframe src=&quot;https://tvatter.shinyapps.io/shinycdf/&quot; width=&quot;100%&quot; height=&quot;600&quot; style=&quot;border: none;&quot;&gt;&lt;/iframe&gt;
 

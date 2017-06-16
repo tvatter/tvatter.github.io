@@ -25,10 +25,7 @@ An interface to the high-performance library for vine copulas modeling. Still in
 
 ## C++
 
-#### [vinecopulib: a C++ library for vine copulas](https://github.com/vinecopulib/vinecopulib) [![Build Status](https://travis-ci.org/vinecopulib/vinecopulib.svg?branch=master)](https://travis-ci.org/vinecopulib/vinecopulib)
-[![Windows Build status](http://ci.appveyor.com/api/projects/status/github/vinecopulib/vinecopulib?branch=master&svg=true)](https://ci.appveyor.com/project/vinecopulib/vinecopulib/branch/master)
-[![Coverage Status](https://img.shields.io/codecov/c/github/vinecopulib/vinecopulib/master.svg)](https://codecov.io/github/vinecopulib/vinecopulib?branch=master)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+#### [vinecopulib: a C++ library for vine copulas](https://github.com/vinecopulib/vinecopulib) [![Build Status](https://travis-ci.org/vinecopulib/vinecopulib.svg?branch=master)](https://travis-ci.org/vinecopulib/vinecopulib) [![Windows Build status](http://ci.appveyor.com/api/projects/status/github/vinecopulib/vinecopulib?branch=master&svg=true)](https://ci.appveyor.com/project/vinecopulib/vinecopulib/branch/master) [![Coverage Status](https://img.shields.io/codecov/c/github/vinecopulib/vinecopulib/master.svg)](https://codecov.io/github/vinecopulib/vinecopulib?branch=master) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 
 A C++ implementation of inference algorithms for bivariate and vine copula models. Under construction.

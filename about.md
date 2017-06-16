@@ -8,9 +8,9 @@ layout: page
 
 ## I'm Thibault Vatter, a statistician and data enthusiast
 
-Trying out math stuff: $$ \frac{1}{n}\sum^n_{i=1} X_i \longrightarrow \mu $$
+Trying out math stuff with an equation: \\[ \frac{1}{n}\sum^n_{i=1} X_i \longrightarrow \mu \\]
 
-Or I write $ \frac{1}{n}\sum^n_{i=1} X_i \longrightarrow \mu $ inline.
+Or I write $$ \frac{1}{n}\sum^n_{i=1} X_i \longrightarrow \mu $$ inline.
 
 I recently finished my PhD working with prof. [Valérie Chavez-Demoulin](https://scholar.google.com/citations?user=ckwRJWAAAAAJ&hl=fr) on [generalized additive models for multivariate distributions](https://serval.unil.ch/resource/serval:BIB_E1AD7D2DCF57.P001/REF) at the Faculty of Business and Economics, University of Lausanne, Switzerland. After a brief transition as a PostDoc with prof. [Anthony C. Davison](http://stat.epfl.ch/) and [Suzanne de Treville](https://scholar.google.com/citations?user=hubUU3AAAAAJ&hl=en), I recently moved to New York with my wife, [Fanny Vatter](https://www.linkedin.com/in/fanny-vatter-31886480), who accepted a position at Weill Cornell Medical College. As for me, I am now working as a PostDoc with prof. [Richard Davis](http://www.stat.columbia.edu/~rdavis/) at Columbia University.
 

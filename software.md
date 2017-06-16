@@ -9,15 +9,15 @@ I write R/C++/Python/MATLAB software, mainly for statistical computing, and you 
 
 ## R
 
-#### [gamCopula: generalized additive models for bivariate and vine copulas](https://github.com/tvatter/gamCopula) [![CRAN ](http://www.r-pkg.org/badges/version/gamCopula)](https://cran.r-project.org/package=gamCopula) 
+#### [gamCopula: generalized additive models for bivariate and vine copulas](https://github.com/tvatter/gamCopula) 
 
 Implementation of various inference and simulation tools to apply generalized additive models to bivariate dependence structures and non-simplified vine copulas. See [Vatter and Chavez-Demoulin, 2015](http://www.sciencedirect.com/science/article/pii/S0047259X15001633) and [Vatter and Nagler, 2016](https://arxiv.org/abs/1608.01593).
 
-#### [VineCopula: statistical inference of vine copulas](https://github.com/tnagler/VineCopula) [![CRAN ](http://www.r-pkg.org/badges/version/VineCopula)](https://cran.r-project.org/package=VineCopula) 
+#### [VineCopula: statistical inference of vine copulas](https://github.com/tnagler/VineCopula) 
 
 Provides tools for the statistical analysis of vine copula models. The package includes tools for parameter estimation, model selection, simulation, goodness-of-fit tests, and visualization. Tools for estimation, selection and exploratory data analysis of bivariate copula models are also provided.
 
-#### [rvinecopulib: R interface to the vinecopulib C++ library](https://github.com/vinecopulib/rbinecopulib) [![travis-build-status](https://travis-ci.org/vinecopulib/rvinecopulib.svg?branch=master)](https://travis-ci.org/vinecopulib/rvinecopulib)
+#### [rvinecopulib: R interface to the vinecopulib C++ library](https://github.com/vinecopulib/rbinecopulib) 
 
 An interface to the high-performance library for vine copulas modeling. Still in active development.
 
@@ -25,8 +25,7 @@ An interface to the high-performance library for vine copulas modeling. Still in
 
 ## C++
 
-#### [vinecopulib: a C++ library for vine copulas](https://github.com/vinecopulib/vinecopulib) [![Build Status](https://travis-ci.org/vinecopulib/vinecopulib.svg?branch=master)](https://travis-ci.org/vinecopulib/vinecopulib) [![Windows Build status](http://ci.appveyor.com/api/projects/status/github/vinecopulib/vinecopulib?branch=master&svg=true)](https://ci.appveyor.com/project/vinecopulib/vinecopulib/branch/master) [![Coverage Status](https://img.shields.io/codecov/c/github/vinecopulib/vinecopulib/master.svg)](https://codecov.io/github/vinecopulib/vinecopulib?branch=master) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
+#### [vinecopulib: a C++ library for vine copulas](https://github.com/vinecopulib/vinecopulib) 
 
 A C++ implementation of inference algorithms for bivariate and vine copula models. Under construction.
 

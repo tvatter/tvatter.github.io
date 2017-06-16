@@ -4,7 +4,7 @@
  <title></title>
  <link href="https://tvatter.github.io//atom.xml" rel="self"/>
  <link href="https://tvatter.github.io//"/>
- <updated>2017-06-16T12:48:49-04:00</updated>
+ <updated>2017-06-16T13:00:21-04:00</updated>
  <id>https://tvatter.github.io/</id>
  <author>
    <name>Thibault Vatter</name>
@@ -18,8 +18,7 @@
    <updated>2017-06-16T00:00:00-04:00</updated>
    <id>https://tvatter.github.io//2017/06/16/the-value-of-lead-time</id>
    <content type="html">&lt;p&gt;In &lt;a href=&quot;#references&quot;&gt;two very nice papers&lt;/a&gt;, Suzanne and her collaborators developped 
-an interesting idea about valuing lead time based on financial mathematics related 
-to option pricing. In the &lt;a href=&quot;https://en.wikipedia.org/wiki/Newsvendor_model&quot;&gt;standard newsvendor model&lt;/a&gt;, the profits of the firm at delivery time &lt;script type=&quot;math/tex&quot;&gt;T&lt;/script&gt; for an order of &lt;script type=&quot;math/tex&quot;&gt;Q&lt;/script&gt; units are&lt;/p&gt;
+an interesting idea about valuing lead time based on financial mathematics concepts used traditionally for option pricing. In the &lt;a href=&quot;https://en.wikipedia.org/wiki/Newsvendor_model&quot;&gt;standard newsvendor model&lt;/a&gt;, the profits of the firm at delivery time &lt;script type=&quot;math/tex&quot;&gt;T&lt;/script&gt; for an order of &lt;script type=&quot;math/tex&quot;&gt;Q&lt;/script&gt; units are&lt;/p&gt;
 
 &lt;p&gt;\[
 \begin{align}

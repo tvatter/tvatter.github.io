@@ -8,8 +8,7 @@ tags: [lead time, operations, forecast evolution, option pricing]
 ---
 
 In [two very nice papers](#references), Suzanne and her collaborators developped 
-an interesting idea about valuing lead time based on financial mathematics related 
-to option pricing. In the [standard newsvendor model](https://en.wikipedia.org/wiki/Newsvendor_model), the profits of the firm at delivery time $$T$$ for an order of $$Q$$ units are
+an interesting idea about valuing lead time based on financial mathematics concepts used traditionally for option pricing. In the [standard newsvendor model](https://en.wikipedia.org/wiki/Newsvendor_model), the profits of the firm at delivery time $$T$$ for an order of $$Q$$ units are
 
 \\[
 \begin{align}

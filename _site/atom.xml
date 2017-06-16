@@ -4,13 +4,151 @@
  <title></title>
  <link href="https://tvatter.github.io//atom.xml" rel="self"/>
  <link href="https://tvatter.github.io//"/>
- <updated>2017-06-16T10:20:49-04:00</updated>
+ <updated>2017-06-16T12:45:11-04:00</updated>
  <id>https://tvatter.github.io/</id>
  <author>
    <name>Thibault Vatter</name>
    <email>thibault.vatter@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>The value of lead time</title>
+   <link href="https://tvatter.github.io//2017/06/16/the-value-of-lead-time/"/>
+   <updated>2017-06-16T00:00:00-04:00</updated>
+   <id>https://tvatter.github.io//2017/06/16/the-value-of-lead-time</id>
+   <content type="html">&lt;p&gt;In &lt;a href=&quot;#references&quot;&gt;two very nice papers&lt;/a&gt;, Suzanne and her collaborators developped 
+an interesting idea about valuing lead time based on financial mathematics related 
+to option pricing. In the &lt;a href=&quot;https://en.wikipedia.org/wiki/Newsvendor_model&quot;&gt;standard newsvendor model&lt;/a&gt;, the profits of the firm at delivery time &lt;script type=&quot;math/tex&quot;&gt;T&lt;/script&gt; for an order of &lt;script type=&quot;math/tex&quot;&gt;Q&lt;/script&gt; units are&lt;/p&gt;
+
+&lt;p&gt;\[
+\Pi_T = p \min(D_T,Q) - c Q + s \max(Q-D_T, 0) = (p-c) Q - (p-s) \max(Q-D_T, 0),
+\]&lt;/p&gt;
+
+&lt;p&gt;where &lt;script type=&quot;math/tex&quot;&gt;D_T&lt;/script&gt; is the demand, &lt;script type=&quot;math/tex&quot;&gt;p&lt;/script&gt; is the selling price of the product, &lt;script type=&quot;math/tex&quot;&gt;c&lt;/script&gt; its cost and &lt;script type=&quot;math/tex&quot;&gt;s&lt;/script&gt; its salvage value. The usual solution, i.e. the profit-maximizing order quantity is given by &lt;script type=&quot;math/tex&quot;&gt;Q = F^{-1}(\alpha)&lt;/script&gt;,
+where &lt;script type=&quot;math/tex&quot;&gt;F&lt;/script&gt; is the distribution of the unkown demand, &lt;script type=&quot;math/tex&quot;&gt;\alpha = (p-c)/(p-s)&lt;/script&gt;.&lt;/p&gt;
+
+&lt;p&gt;Looking closer at the profits, one recognizes in &lt;script type=&quot;math/tex&quot;&gt;\max(Q-D_T, 0)&lt;/script&gt; the payoff of a put 
+option on the demand with strike &lt;script type=&quot;math/tex&quot;&gt;Q&lt;/script&gt;. Under absence of arbitrage, the &lt;script type=&quot;math/tex&quot;&gt;t \leq T&lt;/script&gt; price of such an option is &lt;script type=&quot;math/tex&quot;&gt;P(D_t,t,T,Q) = E^{\mathcal{Q}}_t \left[ \max(Q-D_T, 0) \right]&lt;/script&gt;, where &lt;script type=&quot;math/tex&quot;&gt;\mathcal{Q}&lt;/script&gt; denotes the risk-neutral probability measure, and thus the expected profit can be written as&lt;/p&gt;
+
+&lt;p&gt;\[
+ E^{\mathcal{Q}}_t \left[ \Pi_T \right] = (p-c) Q - (p-s) P(D_t,t,T,Q).
+\]&lt;/p&gt;
+
+&lt;p&gt;Let us assume that the firm as the choice between&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;producing at &lt;script type=&quot;math/tex&quot;&gt;t_s \leq  T&lt;/script&gt; for a cost &lt;script type=&quot;math/tex&quot;&gt;c_s&lt;/script&gt;,&lt;/li&gt;
+  &lt;li&gt;producing at &lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
+t_l&lt; t_s %]]&gt;&lt;/script&gt; for a cost &lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
+c_l &lt; c_s %]]&gt;&lt;/script&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This is typical of a situation when a firm can choose between a local production or a delocalization. Now, the interesting question is: how can we value lead time? In other words, what are the right &lt;script type=&quot;math/tex&quot;&gt;c_l&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;c_s&lt;/script&gt; to compensate the firm for the uncertainty about future demand? Or given &lt;script type=&quot;math/tex&quot;&gt;c_l&lt;/script&gt;, which &lt;script type=&quot;math/tex&quot;&gt;c_s&lt;/script&gt; would the firm require to be indifferent between producing at &lt;script type=&quot;math/tex&quot;&gt;t_s&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;t_l&lt;/script&gt;?&lt;/p&gt;
+
+&lt;p&gt;For the sake of simplicity, we will fix &lt;script type=&quot;math/tex&quot;&gt;t_s = T&lt;/script&gt; (i.e., &lt;script type=&quot;math/tex&quot;&gt;c_s&lt;/script&gt; is the make-to-order cost), &lt;script type=&quot;math/tex&quot;&gt;t_l=0&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;D_0=1&lt;/script&gt;. Given &lt;script type=&quot;math/tex&quot;&gt;c_l&lt;/script&gt;, let &lt;script type=&quot;math/tex&quot;&gt;Q_l&lt;/script&gt; denote the profit maximizing order quantity. If the distribution of the demand is known, then &lt;script type=&quot;math/tex&quot;&gt;Q_l&lt;/script&gt; can be computed as for the newsvendor model. Otherwise, one has to numerically solve
+\[
+ Q_l = \mbox{argmax}_Q \left\lbrace (p-c_l) Q - (p-s) P(1,0,T,Q) \right\rbrace.
+\]&lt;/p&gt;
+
+&lt;p&gt;In the make-to-order case, it is clear that &lt;script type=&quot;math/tex&quot;&gt;Q_s=D_T&lt;/script&gt;. Since, under the absence of arbitrage, we have 
+&lt;script type=&quot;math/tex&quot;&gt;E^{\mathcal{Q}}_t \left[ D_T \right] = D_t&lt;/script&gt;, it follows that the expected profit at time &lt;script type=&quot;math/tex&quot;&gt;0&lt;/script&gt; is simply &lt;script type=&quot;math/tex&quot;&gt;p-c_s&lt;/script&gt;. 
+As such, the cost &lt;script type=&quot;math/tex&quot;&gt;c_s&lt;/script&gt; making the firm indifferent between producing at time &lt;script type=&quot;math/tex&quot;&gt;0&lt;/script&gt; or time &lt;script type=&quot;math/tex&quot;&gt;T&lt;/script&gt; is given by&lt;/p&gt;
+
+&lt;p&gt;\[
+c_s = p - (p-c_l) Q_l + (p-s) P(1,0,T,Q_l).
+\]&lt;/p&gt;
+
+&lt;p&gt;In the &lt;a href=&quot;https://shiny.rstudio.com/&quot;&gt;shiny app&lt;/a&gt;, we assume that &lt;script type=&quot;math/tex&quot;&gt;T=1&lt;/script&gt; and show the cost differential frontier, namely &lt;script type=&quot;math/tex&quot;&gt;(c_s-c_l)/c_s&lt;/script&gt; as a function of &lt;script type=&quot;math/tex&quot;&gt;t_l \in [0,T]&lt;/script&gt;:&lt;/p&gt;
+
+&lt;iframe src=&quot;https://tvatter.shinyapps.io/shinycdf/&quot; width=&quot;100%&quot; height=&quot;600&quot; style=&quot;border: none;&quot;&gt;&lt;/iframe&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;p&gt;de Treville, S., Schürhoff, N., Trigeorgis, L. and Avanzi, B. (2014)&lt;br /&gt;
+&lt;a href=&quot;http://dx.doi.org/10.1111/poms.12223&quot;&gt;Optimal Sourcing and Lead-Time Reduction under Evolutionary Demand  Risk&lt;/a&gt;&lt;br /&gt;
+&lt;em&gt;Production and Operations Management, Volume 23, Issue 12, 2103-2117&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;de Treville, S., Bicer, I., Chavez-Demoulin, V., Hagspiel, V., Schürhoff, N., Tasserit, C. and Wager, S. (2014)&lt;br /&gt;
+&lt;a href=&quot;http://dx.doi.org/10.1016/j.jom.2014.06.002&quot;&gt;Valuing lead time&lt;/a&gt;&lt;br /&gt;
+&lt;em&gt;Journal of Operations Management, Volume 32, Issue 6, 337-346&lt;/em&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Another look at confounding</title>
+   <link href="https://tvatter.github.io//2017/03/29/another-look-at-confounding/"/>
+   <updated>2017-03-29T00:00:00-04:00</updated>
+   <id>https://tvatter.github.io//2017/03/29/another-look-at-confounding</id>
+   <content type="html">&lt;p&gt;Assume that one is interested in studying a relationship between two random 
+variables &lt;script type=&quot;math/tex&quot;&gt;X&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;Y&lt;/script&gt;. Simply put, a variable &lt;script type=&quot;math/tex&quot;&gt;Z&lt;/script&gt; is said to be confonfounding 
+if it explains some (or all) of the dependence between &lt;script type=&quot;math/tex&quot;&gt;X&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;Y&lt;/script&gt;. For instance, 
+if &lt;script type=&quot;math/tex&quot;&gt;Z&lt;/script&gt; is such that &lt;script type=&quot;math/tex&quot;&gt;X \perp Y  \mid Z&lt;/script&gt;, then one says that &lt;script type=&quot;math/tex&quot;&gt;Z&lt;/script&gt; is a confounding 
+variable for the relationship between &lt;script type=&quot;math/tex&quot;&gt;X&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;Y&lt;/script&gt;. This situation is illustrated 
+in the following graphical model:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/figure/source/another-look-at-confounding/2017-03-29-another-look-at-confounding/unnamed-chunk-1-1.png&quot; alt=&quot;plot of chunk unnamed-chunk-1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;For instance, with &lt;script type=&quot;math/tex&quot;&gt;X \mid Z \sim N(Z,1)&lt;/script&gt;, &lt;script type=&quot;math/tex&quot;&gt;Y  \mid Z \sim N(Z,1)&lt;/script&gt;, and 
+&lt;script type=&quot;math/tex&quot;&gt;Z \sim N(0,2)&lt;/script&gt;, we have that &lt;script type=&quot;math/tex&quot;&gt;corr \left(X,Y \right)=0.8&lt;/script&gt;, namely &lt;script type=&quot;math/tex&quot;&gt;X&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;Y&lt;/script&gt; are correlated. 
+However, since &lt;script type=&quot;math/tex&quot;&gt;corr \left(X,Z \right)=\sqrt{0.8}&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;corr \left(Y,Z \right)=\sqrt{0.8}&lt;/script&gt;, there is no partial correlation between &lt;script type=&quot;math/tex&quot;&gt;X&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;Y&lt;/script&gt; when controlling for the effect of &lt;script type=&quot;math/tex&quot;&gt;Z&lt;/script&gt;, that is&lt;/p&gt;
+
+&lt;p&gt;\[
+corr \left(X,Y;Z \right)= \frac{corr \left(X,Y \right)-corr \left(X,Z \right)corr \left(Y,Z \right)}{\sqrt{1-corr \left(X,Z \right)^2}\sqrt{1-corr \left(X,Y \right)^2}} = 0.
+\]&lt;/p&gt;
+
+&lt;p&gt;In other words, &lt;script type=&quot;math/tex&quot;&gt;Z&lt;/script&gt; acts as a confounding variable in the sense that, without taking its effect into account, one could make misleading conclusions on the correlation between &lt;script type=&quot;math/tex&quot;&gt;X&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;Y&lt;/script&gt;. This can be seen in the following two figures, where &lt;script type=&quot;math/tex&quot;&gt;X&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;Y&lt;/script&gt; are correlated, 
+but &lt;script type=&quot;math/tex&quot;&gt;X-Z&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;Y-Z&lt;/script&gt; are not:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/figure/source/another-look-at-confounding/2017-03-29-another-look-at-confounding/unnamed-chunk-2-1.png&quot; alt=&quot;plot of chunk unnamed-chunk-2&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Consider now the conditional correlation between the random variables &lt;script type=&quot;math/tex&quot;&gt;X&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;Y&lt;/script&gt; given &lt;script type=&quot;math/tex&quot;&gt;Z&lt;/script&gt;, which is defined by&lt;/p&gt;
+
+&lt;p&gt;\[
+corr \left(X,Y \mid Z \right) = 
+\frac{E \left[\left\lbrace X-E \left(X \mid Z \right) \right\rbrace \left\lbrace Y-E \left(Y \mid Z \right) \right\rbrace \mid Z \right]}{ \left( E \left[ \left\lbrace X-E \left(X \mid Z \right) \right\rbrace^2 \mid Z \right] E \left[ \left\lbrace Y-E \left(Y \mid Z \right) \right\rbrace^2 \mid Z \right] \right)^{1/2}}
+\]&lt;/p&gt;
+
+&lt;p&gt;In the example above, it is clear that &lt;script type=&quot;math/tex&quot;&gt;corr \left(X,Y \mid Z \right) = corr \left(X,Y ; Z \right)&lt;/script&gt;. However, let &lt;script type=&quot;math/tex&quot;&gt;X =  A + BZ&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;Y =  C + DZ&lt;/script&gt; where &lt;script type=&quot;math/tex&quot;&gt;A,B,C,D&lt;/script&gt; are independently distributed random variables, then&lt;/p&gt;
+
+&lt;p&gt;\[
+    corr \left(X,Y \mid Z \right)=&lt;br /&gt;
+    \frac{cov \left(A,C \right) + \left\lbrace cov \left(A,D \right)+cov \left(B,C \right) \right\rbrace Z + cov \left(B,D \right)Z^2}{
+    \begin{aligned}
+ \Bigg[ &amp;amp;\big\lbrace var \left(A \right) + 2\, cov \left(A,B \right)  Z + var \left(B \right)Z^2\big\rbrace \\
+           &amp;amp; \cdot \big\lbrace var \left(C \right) + 2\, cov \left(C,D \right)  Z + var \left(D \right)Z^2\big\rbrace \Bigg]^{1/2}
+\end{aligned}
+    }.
+\]&lt;/p&gt;
+
+&lt;p&gt;and if &lt;script type=&quot;math/tex&quot;&gt;A,B,C,D&lt;/script&gt; have equal variance and correlation &lt;script type=&quot;math/tex&quot;&gt;\rho&lt;/script&gt;, we have that&lt;/p&gt;
+
+&lt;p&gt;\[
+    corr \left(X,Y \mid Z \right)=\frac{\rho \left( 1 + Z \right)^2}{
+    \left( 1 + 2\, \rho Z \, + Z^2 \right)}.
+\]&lt;/p&gt;
+
+&lt;p&gt;In this example, it is clear that the conditional correlation depends on the value of the conditioning variable &lt;script type=&quot;math/tex&quot;&gt;Z&lt;/script&gt; explicitly. Hence, it is in general not equal to the partial correlation.&lt;/p&gt;
+
+&lt;p&gt;To study how &lt;script type=&quot;math/tex&quot;&gt;Z&lt;/script&gt; can act as a confounding variable in this context, it is interesting to start from 
+another example. Consider &lt;script type=&quot;math/tex&quot;&gt;X,Y,Z \sim N(0,1)&lt;/script&gt; marginally,
+but such that&lt;/p&gt;
+
+&lt;p&gt;\[
+corr \left(X,Y \mid Z \right)= \begin{cases}
+-0.5 &amp;amp;\mbox{if } Z \leq 0 \\
+0.5 &amp;amp;\mbox{otherwise}
+\end{cases}.
+\]&lt;/p&gt;
+
+&lt;p&gt;Because &lt;script type=&quot;math/tex&quot;&gt;P(X \leq 0) = 1/2&lt;/script&gt;, we have that &lt;script type=&quot;math/tex&quot;&gt;corr \left(X,Y\right) = 0&lt;/script&gt;, and because &lt;script type=&quot;math/tex&quot;&gt;corr \left(X,Z\right) = 0&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;corr \left(Y,Z\right) = 0&lt;/script&gt;, we even have &lt;script type=&quot;math/tex&quot;&gt;corr \left(X,Y ; Z\right) = 0&lt;/script&gt;. In other words,
+without taking into account the effect of &lt;script type=&quot;math/tex&quot;&gt;Z&lt;/script&gt; or by looking at the partial correlation only, one would wrongly conclude that &lt;script type=&quot;math/tex&quot;&gt;X&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;Y&lt;/script&gt; are independent, as observed in the following figure:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/figure/source/another-look-at-confounding/2017-03-29-another-look-at-confounding/unnamed-chunk-3-1.png&quot; alt=&quot;plot of chunk unnamed-chunk-3&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;To summarize, rather than explaining some (or all) of the dependence between the variables of interest, it is also worth looking at confounding variables as masking relationships!&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Set up Travis to embed R in a non-R project</title>

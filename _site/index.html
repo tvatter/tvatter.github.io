@@ -172,6 +172,156 @@
   
   <div class="post">
     <h1 class="post-title">
+      <a href="/2017/06/16/the-value-of-lead-time/">
+        The value of lead time
+      </a>
+    </h1>
+
+    <span class="post-date">16 Jun 2017</span>
+    <hr>
+
+    <p>In <a href="#references">two very nice papers</a>, Suzanne and her collaborators developped 
+an interesting idea about valuing lead time based on financial mathematics related 
+to option pricing. In the <a href="https://en.wikipedia.org/wiki/Newsvendor_model">standard newsvendor model</a>, the profits of the firm at delivery time <script type="math/tex">T</script> for an order of <script type="math/tex">Q</script> units are</p>
+
+<p>\[
+\Pi_T = p \min(D_T,Q) - c Q + s \max(Q-D_T, 0) = (p-c) Q - (p-s) \max(Q-D_T, 0),
+\]</p>
+
+<p>where <script type="math/tex">D_T</script> is the demand, <script type="math/tex">p</script> is the selling price of the product, <script type="math/tex">c</script> its cost and <script type="math/tex">s</script> its salvage value. The usual solution, i.e. the profit-maximizing order quantity is given by <script type="math/tex">Q = F^{-1}(\alpha)</script>,
+where <script type="math/tex">F</script> is the distribution of the unkown demand, <script type="math/tex">\alpha = (p-c)/(p-s)</script>.</p>
+
+<p>Looking closer at the profits, one recognizes in <script type="math/tex">\max(Q-D_T, 0)</script> the payoff of a put 
+option on the demand with strike <script type="math/tex">Q</script>. Under absence of arbitrage, the <script type="math/tex">t \leq T</script> price of such an option is <script type="math/tex">P(D_t,t,T,Q) = E^{\mathcal{Q}}_t \left[ \max(Q-D_T, 0) \right]</script>, where <script type="math/tex">\mathcal{Q}</script> denotes the risk-neutral probability measure, and thus the expected profit can be written as</p>
+
+<p>\[
+ E^{\mathcal{Q}}_t \left[ \Pi_T \right] = (p-c) Q - (p-s) P(D_t,t,T,Q).
+\]</p>
+
+<p>Let us assume that the firm as the choice between</p>
+
+<ul>
+  <li>producing at <script type="math/tex">t_s \leq  T</script> for a cost <script type="math/tex">c_s</script>,</li>
+  <li>producing at <script type="math/tex">% <![CDATA[
+t_l< t_s %]]></script> for a cost <script type="math/tex">% <![CDATA[
+c_l < c_s %]]></script>.</li>
+</ul>
+
+<p>This is typical of a situation when a firm can choose between a local production or a delocalization. Now, the interesting question is: how can we value lead time? In other words, what are the right <script type="math/tex">c_l</script> and <script type="math/tex">c_s</script> to compensate the firm for the uncertainty about future demand? Or given <script type="math/tex">c_l</script>, which <script type="math/tex">c_s</script> would the firm require to be indifferent between producing at <script type="math/tex">t_s</script> and <script type="math/tex">t_l</script>?</p>
+
+<p>For the sake of simplicity, we will fix <script type="math/tex">t_s = T</script> (i.e., <script type="math/tex">c_s</script> is the make-to-order cost), <script type="math/tex">t_l=0</script> and <script type="math/tex">D_0=1</script>. Given <script type="math/tex">c_l</script>, let <script type="math/tex">Q_l</script> denote the profit maximizing order quantity. If the distribution of the demand is known, then <script type="math/tex">Q_l</script> can be computed as for the newsvendor model. Otherwise, one has to numerically solve
+\[
+ Q_l = \mbox{argmax}_Q \left\lbrace (p-c_l) Q - (p-s) P(1,0,T,Q) \right\rbrace.
+\]</p>
+
+<p>In the make-to-order case, it is clear that <script type="math/tex">Q_s=D_T</script>. Since, under the absence of arbitrage, we have 
+<script type="math/tex">E^{\mathcal{Q}}_t \left[ D_T \right] = D_t</script>, it follows that the expected profit at time <script type="math/tex">0</script> is simply <script type="math/tex">p-c_s</script>. 
+As such, the cost <script type="math/tex">c_s</script> making the firm indifferent between producing at time <script type="math/tex">0</script> or time <script type="math/tex">T</script> is given by</p>
+
+<p>\[
+c_s = p - (p-c_l) Q_l + (p-s) P(1,0,T,Q_l).
+\]</p>
+
+<p>In the <a href="https://shiny.rstudio.com/">shiny app</a>, we assume that <script type="math/tex">T=1</script> and show the cost differential frontier, namely <script type="math/tex">(c_s-c_l)/c_s</script> as a function of <script type="math/tex">t_l \in [0,T]</script>:</p>
+
+<iframe src="https://tvatter.shinyapps.io/shinycdf/" width="100%" height="600" style="border: none;"></iframe>
+
+<h2 id="references">References</h2>
+
+<p>de Treville, S., Schürhoff, N., Trigeorgis, L. and Avanzi, B. (2014)<br />
+<a href="http://dx.doi.org/10.1111/poms.12223">Optimal Sourcing and Lead-Time Reduction under Evolutionary Demand  Risk</a><br />
+<em>Production and Operations Management, Volume 23, Issue 12, 2103-2117</em></p>
+
+<p>de Treville, S., Bicer, I., Chavez-Demoulin, V., Hagspiel, V., Schürhoff, N., Tasserit, C. and Wager, S. (2014)<br />
+<a href="http://dx.doi.org/10.1016/j.jom.2014.06.002">Valuing lead time</a><br />
+<em>Journal of Operations Management, Volume 32, Issue 6, 337-346</em></p>
+
+    <a href="/2017/06/16/the-value-of-lead-time/" class="read-more-btn"> <b>Read more &#187;</b> </a>
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2017/03/29/another-look-at-confounding/">
+        Another look at confounding
+      </a>
+    </h1>
+
+    <span class="post-date">29 Mar 2017</span>
+    <hr>
+
+    <p>Assume that one is interested in studying a relationship between two random 
+variables <script type="math/tex">X</script> and <script type="math/tex">Y</script>. Simply put, a variable <script type="math/tex">Z</script> is said to be confonfounding 
+if it explains some (or all) of the dependence between <script type="math/tex">X</script> and <script type="math/tex">Y</script>. For instance, 
+if <script type="math/tex">Z</script> is such that <script type="math/tex">X \perp Y  \mid Z</script>, then one says that <script type="math/tex">Z</script> is a confounding 
+variable for the relationship between <script type="math/tex">X</script> and <script type="math/tex">Y</script>. This situation is illustrated 
+in the following graphical model:</p>
+
+<p><img src="/figure/source/another-look-at-confounding/2017-03-29-another-look-at-confounding/unnamed-chunk-1-1.png" alt="plot of chunk unnamed-chunk-1" /></p>
+
+<p>For instance, with <script type="math/tex">X \mid Z \sim N(Z,1)</script>, <script type="math/tex">Y  \mid Z \sim N(Z,1)</script>, and 
+<script type="math/tex">Z \sim N(0,2)</script>, we have that <script type="math/tex">corr \left(X,Y \right)=0.8</script>, namely <script type="math/tex">X</script> and <script type="math/tex">Y</script> are correlated. 
+However, since <script type="math/tex">corr \left(X,Z \right)=\sqrt{0.8}</script> and <script type="math/tex">corr \left(Y,Z \right)=\sqrt{0.8}</script>, there is no partial correlation between <script type="math/tex">X</script> and <script type="math/tex">Y</script> when controlling for the effect of <script type="math/tex">Z</script>, that is</p>
+
+<p>\[
+corr \left(X,Y;Z \right)= \frac{corr \left(X,Y \right)-corr \left(X,Z \right)corr \left(Y,Z \right)}{\sqrt{1-corr \left(X,Z \right)^2}\sqrt{1-corr \left(X,Y \right)^2}} = 0.
+\]</p>
+
+<p>In other words, <script type="math/tex">Z</script> acts as a confounding variable in the sense that, without taking its effect into account, one could make misleading conclusions on the correlation between <script type="math/tex">X</script> and <script type="math/tex">Y</script>. This can be seen in the following two figures, where <script type="math/tex">X</script> and <script type="math/tex">Y</script> are correlated, 
+but <script type="math/tex">X-Z</script> and <script type="math/tex">Y-Z</script> are not:</p>
+
+<p><img src="/figure/source/another-look-at-confounding/2017-03-29-another-look-at-confounding/unnamed-chunk-2-1.png" alt="plot of chunk unnamed-chunk-2" /></p>
+
+<p>Consider now the conditional correlation between the random variables <script type="math/tex">X</script> and <script type="math/tex">Y</script> given <script type="math/tex">Z</script>, which is defined by</p>
+
+<p>\[
+corr \left(X,Y \mid Z \right) = 
+\frac{E \left[\left\lbrace X-E \left(X \mid Z \right) \right\rbrace \left\lbrace Y-E \left(Y \mid Z \right) \right\rbrace \mid Z \right]}{ \left( E \left[ \left\lbrace X-E \left(X \mid Z \right) \right\rbrace^2 \mid Z \right] E \left[ \left\lbrace Y-E \left(Y \mid Z \right) \right\rbrace^2 \mid Z \right] \right)^{1/2}}
+\]</p>
+
+<p>In the example above, it is clear that <script type="math/tex">corr \left(X,Y \mid Z \right) = corr \left(X,Y ; Z \right)</script>. However, let <script type="math/tex">X =  A + BZ</script> and <script type="math/tex">Y =  C + DZ</script> where <script type="math/tex">A,B,C,D</script> are independently distributed random variables, then</p>
+
+<p>\[
+    corr \left(X,Y \mid Z \right)=<br />
+    \frac{cov \left(A,C \right) + \left\lbrace cov \left(A,D \right)+cov \left(B,C \right) \right\rbrace Z + cov \left(B,D \right)Z^2}{
+    \begin{aligned}
+ \Bigg[ &amp;\big\lbrace var \left(A \right) + 2\, cov \left(A,B \right)  Z + var \left(B \right)Z^2\big\rbrace \\
+           &amp; \cdot \big\lbrace var \left(C \right) + 2\, cov \left(C,D \right)  Z + var \left(D \right)Z^2\big\rbrace \Bigg]^{1/2}
+\end{aligned}
+    }.
+\]</p>
+
+<p>and if <script type="math/tex">A,B,C,D</script> have equal variance and correlation <script type="math/tex">\rho</script>, we have that</p>
+
+<p>\[
+    corr \left(X,Y \mid Z \right)=\frac{\rho \left( 1 + Z \right)^2}{
+    \left( 1 + 2\, \rho Z \, + Z^2 \right)}.
+\]</p>
+
+<p>In this example, it is clear that the conditional correlation depends on the value of the conditioning variable <script type="math/tex">Z</script> explicitly. Hence, it is in general not equal to the partial correlation.</p>
+
+<p>To study how <script type="math/tex">Z</script> can act as a confounding variable in this context, it is interesting to start from 
+another example. Consider <script type="math/tex">X,Y,Z \sim N(0,1)</script> marginally,
+but such that</p>
+
+<p>\[
+corr \left(X,Y \mid Z \right)= \begin{cases}
+-0.5 &amp;\mbox{if } Z \leq 0 \\
+0.5 &amp;\mbox{otherwise}
+\end{cases}.
+\]</p>
+
+<p>Because <script type="math/tex">P(X \leq 0) = 1/2</script>, we have that <script type="math/tex">corr \left(X,Y\right) = 0</script>, and because <script type="math/tex">corr \left(X,Z\right) = 0</script> and <script type="math/tex">corr \left(Y,Z\right) = 0</script>, we even have <script type="math/tex">corr \left(X,Y ; Z\right) = 0</script>. In other words,
+without taking into account the effect of <script type="math/tex">Z</script> or by looking at the partial correlation only, one would wrongly conclude that <script type="math/tex">X</script> and <script type="math/tex">Y</script> are independent, as observed in the following figure:</p>
+
+<p><img src="/figure/source/another-look-at-confounding/2017-03-29-another-look-at-confounding/unnamed-chunk-3-1.png" alt="plot of chunk unnamed-chunk-3" /></p>
+
+<p>To summarize, rather than explaining some (or all) of the dependence between the variables of interest, it is also worth looking at confounding variables as masking relationships!</p>
+
+    <a href="/2017/03/29/another-look-at-confounding/" class="read-more-btn"> <b>Read more &#187;</b> </a>
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
       <a href="/2017/01/11/set-up-travis-to-embed-r-in-non-r-project/">
         Set up Travis to embed R in a non-R project
       </a>

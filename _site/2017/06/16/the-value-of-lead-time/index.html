@@ -11,7 +11,7 @@
 
   <title>
     
-    Set up Travis to embed R in a non-R project &middot; 
+    The value of lead time &middot; 
     
   </title>
   
@@ -164,89 +164,63 @@
 
 
 <div class="post">
-  <h1 class="post-title">Set up Travis to embed R in a non-R project</h1>
-  <span class="post-date">11 Jan 2017</span>
-  <p><a href="https://en.wikipedia.org/wiki/Continuous_integration">Continuous integration</a> 
-(<a href="https://en.wikipedia.org/wiki/Continuous_integration">CI</a>) is great way of ensuring that code working in your 
-local environment will also work with other configurations. If, like me, you’re using <a href="https://github.com/">GitHub</a>, then a neat solution to implement <a href="https://en.wikipedia.org/wiki/Continuous_integration">CI</a> principles within a new project is <a href="https://travis-ci.org">Travis CI</a>:</p>
+  <h1 class="post-title">The value of lead time</h1>
+  <span class="post-date">16 Jun 2017</span>
+  <p>In <a href="#references">two very nice papers</a>, Suzanne and her collaborators developped 
+an interesting idea about valuing lead time based on financial mathematics related 
+to option pricing. In the <a href="https://en.wikipedia.org/wiki/Newsvendor_model">standard newsvendor model</a>, the profits of the firm at delivery time <script type="math/tex">T</script> for an order of <script type="math/tex">Q</script> units are</p>
 
-<blockquote>
-  <p>Travis CI is a hosted, distributed continuous integration service used to build and 
-test software projects hosted at GitHub.</p>
+<p>\[
+\Pi_T = p \min(D_T,Q) - c Q + s \max(Q-D_T, 0) = (p-c) Q - (p-s) \max(Q-D_T, 0),
+\]</p>
 
-  <p>—<cite>Wikipedia</cite></p>
-</blockquote>
+<p>where <script type="math/tex">D_T</script> is the demand, <script type="math/tex">p</script> is the selling price of the product, <script type="math/tex">c</script> its cost and <script type="math/tex">s</script> its salvage value. The usual solution, i.e. the profit-maximizing order quantity is given by <script type="math/tex">Q = F^{-1}(\alpha)</script>,
+where <script type="math/tex">F</script> is the distribution of the unkown demand, <script type="math/tex">\alpha = (p-c)/(p-s)</script>.</p>
 
-<p>However, it is well known that the default environment provided in <a href="https://travis-ci.org">Travis CI</a> 
-is somewhat outdated. For instance, while implementing a <a href="https://github.com/tvatter/vinecopulib">C++ library for vine copulas</a>, I 
-wanted to unit-test the C++ library by comparing its output to the <a href="https://cran.r-project.org/web/packages/VineCopula/index.html">VineCopula  R package</a>, which 
-itself depends on the <a href="https://cran.r-project.org/web/packages/copula/index.html">copula R package</a>. 
-Very naively, I then tried to write a <code class="highlighter-rouge">.travis.yml</code> that started with:</p>
+<p>Looking closer at the profits, one recognizes in <script type="math/tex">\max(Q-D_T, 0)</script> the payoff of a put 
+option on the demand with strike <script type="math/tex">Q</script>. Under absence of arbitrage, the <script type="math/tex">t \leq T</script> price of such an option is <script type="math/tex">P(D_t,t,T,Q) = E^{\mathcal{Q}}_t \left[ \max(Q-D_T, 0) \right]</script>, where <script type="math/tex">\mathcal{Q}</script> denotes the risk-neutral probability measure, and thus the expected profit can be written as</p>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>language: cpp
-matrix:
-  include:
-    - os: linux
-      dist: trusty
-      sudo: required
+<p>\[
+ E^{\mathcal{Q}}_t \left[ \Pi_T \right] = (p-c) Q - (p-s) P(D_t,t,T,Q).
+\]</p>
 
-install:
-  - sudo apt-get install r-base
-  - sudo apt-get install libgsl0-dev
-  - sudo Rscript -e <span class="s1">'install.packages("copula", repos="https://cran.rstudio.com/", lib="/usr/lib/R/library")'</span>
-</code></pre>
-</div>
-<p>Note that <code class="highlighter-rouge">sudo apt-get install libgsl0-dev gsl-bin</code> is used because the 
-the <a href="https://cran.r-project.org/web/packages/copula/index.html">copula R package</a> depends on 
-the <a href="https://cran.r-project.org/web/packages/gsl/index.html">gsl R package</a>, which requires an install 
-of the <a href="http://www.gnu.org/software/gsl/">Gnu Scientific Library</a>.</p>
-
-<p>Obviously, the <code class="highlighter-rouge">.travis.yml</code> above didn’t work, as the <a href="https://travis-ci.org">Travis CI</a> log showed:</p>
-
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>Warning message: package ‘copula’ is not available <span class="o">(</span><span class="k">for </span>R version 3.0.2<span class="o">)</span> 
-</code></pre>
-</div>
-<p>Version 3.0.2? In 2017? Alright, not a big deal, but since it took me a while to fix this issue, I though that 
-someone else might be interested in the solution, which is in fact extremely simple. 
-One just needs to start the <code class="highlighter-rouge">.travis.yml</code> file with:</p>
-
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>language: cpp
-matrix:
-  include:
-    - os: linux
-      dist: trusty
-      sudo: required
-      
-before_install:
-  - sudo sh -c <span class="s1">'echo "deb https://cloud.r-project.org/bin/linux/ubuntu trusty/" &gt;&gt; /etc/apt/sources.list'</span>
-  - sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
-  - sudo apt-get update
-
-install:
-  - sudo apt-get install r-base
-  - sudo apt-get install libgsl0-dev
-  - sudo Rscript -e <span class="s1">'install.packages("copula", repos="https://cran.rstudio.com/", lib="/usr/lib/R/library")'</span>
-</code></pre>
-</div>
-<p>To obtain the latest R packages, in <code class="highlighter-rouge">before_install</code>, one does the following:</p>
+<p>Let us assume that the firm as the choice between</p>
 
 <ul>
-  <li>Add the R repository to the <code class="highlighter-rouge">/etc/apt/sources.list</code> file</li>
-  <li>Add the R key to Ubuntu’s key-ring since</li>
+  <li>producing at <script type="math/tex">t_s \leq  T</script> for a cost <script type="math/tex">c_s</script>,</li>
+  <li>producing at <script type="math/tex">% <![CDATA[
+t_l< t_s %]]></script> for a cost <script type="math/tex">% <![CDATA[
+c_l < c_s %]]></script>.</li>
 </ul>
 
-<blockquote>
-  <p>The Ubuntu archives on CRAN are signed with the key of “Michael Rutter <a href="marutter@gmail.com">marutter@gmail.com</a>” with key ID E084DAB9. —<cite><a href="https://cran.r-project.org/bin/linux/ubuntu/">https://cran.r-project.org/bin/linux/ubuntu/</a></cite></p>
-</blockquote>
+<p>This is typical of a situation when a firm can choose between a local production or a delocalization. Now, the interesting question is: how can we value lead time? In other words, what are the right <script type="math/tex">c_l</script> and <script type="math/tex">c_s</script> to compensate the firm for the uncertainty about future demand? Or given <script type="math/tex">c_l</script>, which <script type="math/tex">c_s</script> would the firm require to be indifferent between producing at <script type="math/tex">t_s</script> and <script type="math/tex">t_l</script>?</p>
 
-<ul>
-  <li>Update the package lists using the repositories to get information on the newest versions of packages and their dependencies</li>
-</ul>
+<p>For the sake of simplicity, we will fix <script type="math/tex">t_s = T</script> (i.e., <script type="math/tex">c_s</script> is the make-to-order cost), <script type="math/tex">t_l=0</script> and <script type="math/tex">D_0=1</script>. Given <script type="math/tex">c_l</script>, let <script type="math/tex">Q_l</script> denote the profit maximizing order quantity. If the distribution of the demand is known, then <script type="math/tex">Q_l</script> can be computed as for the newsvendor model. Otherwise, one has to numerically solve
+\[
+ Q_l = \mbox{argmax}_Q \left\lbrace (p-c_l) Q - (p-s) P(1,0,T,Q) \right\rbrace.
+\]</p>
 
-<p>And that’s it! Note that, for a C++ project embedding some R code, one might be interested in 
-the R packages <a href="https://cran.r-project.org/web/packages/Rcpp/index.html">Rcpp</a> (for seamless R and C++ Integration) and
-<a href="https://cran.r-project.org/web/packages/RInside/index.html">RInside</a> (to Embed R in C++ Applications), as we did 
-in <a href="https://github.com/tvatter/vinecopulib">vinecopulib</a>.</p>
+<p>In the make-to-order case, it is clear that <script type="math/tex">Q_s=D_T</script>. Since, under the absence of arbitrage, we have 
+<script type="math/tex">E^{\mathcal{Q}}_t \left[ D_T \right] = D_t</script>, it follows that the expected profit at time <script type="math/tex">0</script> is simply <script type="math/tex">p-c_s</script>. 
+As such, the cost <script type="math/tex">c_s</script> making the firm indifferent between producing at time <script type="math/tex">0</script> or time <script type="math/tex">T</script> is given by</p>
+
+<p>\[
+c_s = p - (p-c_l) Q_l + (p-s) P(1,0,T,Q_l).
+\]</p>
+
+<p>In the <a href="https://shiny.rstudio.com/">shiny app</a>, we assume that <script type="math/tex">T=1</script> and show the cost differential frontier, namely <script type="math/tex">(c_s-c_l)/c_s</script> as a function of <script type="math/tex">t_l \in [0,T]</script>:</p>
+
+<iframe src="https://tvatter.shinyapps.io/shinycdf/" width="100%" height="600" style="border: none;"></iframe>
+
+<h2 id="references">References</h2>
+
+<p>de Treville, S., Schürhoff, N., Trigeorgis, L. and Avanzi, B. (2014)<br />
+<a href="http://dx.doi.org/10.1111/poms.12223">Optimal Sourcing and Lead-Time Reduction under Evolutionary Demand  Risk</a><br />
+<em>Production and Operations Management, Volume 23, Issue 12, 2103-2117</em></p>
+
+<p>de Treville, S., Bicer, I., Chavez-Demoulin, V., Hagspiel, V., Schürhoff, N., Tasserit, C. and Wager, S. (2014)<br />
+<a href="http://dx.doi.org/10.1016/j.jom.2014.06.002">Valuing lead time</a><br />
+<em>Journal of Operations Management, Volume 32, Issue 6, 337-346</em></p>
 
 </div>
 
@@ -256,18 +230,18 @@ in <a href="https://github.com/tvatter/vinecopulib">vinecopulib</a>.</p>
     
       <li>
         <h3>
-          <a href="/2017/06/16/the-value-of-lead-time/">
-            The value of lead time
-            <small>16 Jun 2017</small>
+          <a href="/2017/03/29/another-look-at-confounding/">
+            Another look at confounding
+            <small>29 Mar 2017</small>
           </a>
         </h3>
       </li>
     
       <li>
         <h3>
-          <a href="/2017/03/29/another-look-at-confounding/">
-            Another look at confounding
-            <small>29 Mar 2017</small>
+          <a href="/2017/01/11/set-up-travis-to-embed-r-in-non-r-project/">
+            Set up Travis to embed R in a non-R project
+            <small>11 Jan 2017</small>
           </a>
         </h3>
       </li>
@@ -291,7 +265,7 @@ in <a href="https://github.com/tvatter/vinecopulib">vinecopulib</a>.</p>
   <div id="disqus_thread"></div>
   <script type="text/javascript">
     var disqus_shortname = 'tvatter-github-io'; 
-    var disqus_identifier = "/2017/01/11/set-up-travis-to-embed-r-in-non-r-project/";
+    var disqus_identifier = "/2017/06/16/the-value-of-lead-time/";
 
       /* * * DON'T EDIT BELOW THIS LINE * * */
       (function() {

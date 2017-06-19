@@ -4,7 +4,7 @@
  <title></title>
  <link href="https://tvatter.github.io//atom.xml" rel="self"/>
  <link href="https://tvatter.github.io//"/>
- <updated>2017-06-16T13:02:28-04:00</updated>
+ <updated>2017-06-19T09:48:26-04:00</updated>
  <id>https://tvatter.github.io/</id>
  <author>
    <name>Thibault Vatter</name>
@@ -28,7 +28,7 @@ an interesting idea about valuing lead time based on financial mathematics conce
 \]&lt;/p&gt;
 
 &lt;p&gt;where &lt;script type=&quot;math/tex&quot;&gt;D_T&lt;/script&gt; is the demand, &lt;script type=&quot;math/tex&quot;&gt;p&lt;/script&gt; is the selling price of the product, &lt;script type=&quot;math/tex&quot;&gt;c&lt;/script&gt; its cost and &lt;script type=&quot;math/tex&quot;&gt;s&lt;/script&gt; its salvage value. The usual solution, i.e. the profit-maximizing order quantity is given by &lt;script type=&quot;math/tex&quot;&gt;Q = F^{-1}(\alpha)&lt;/script&gt;,
-where &lt;script type=&quot;math/tex&quot;&gt;F&lt;/script&gt; is the distribution of the unkown demand, &lt;script type=&quot;math/tex&quot;&gt;\alpha = (p-c)/(p-s)&lt;/script&gt;.&lt;/p&gt;
+where &lt;script type=&quot;math/tex&quot;&gt;F&lt;/script&gt; is the distribution of the unkown demand and &lt;script type=&quot;math/tex&quot;&gt;\alpha = (p-c)/(p-s)&lt;/script&gt;.&lt;/p&gt;
 
 &lt;p&gt;Looking closer at the profits, one recognizes in &lt;script type=&quot;math/tex&quot;&gt;\max(Q-D_T, 0)&lt;/script&gt; the payoff of a put 
 option on the demand with strike &lt;script type=&quot;math/tex&quot;&gt;Q&lt;/script&gt;. Under absence of arbitrage, the &lt;script type=&quot;math/tex&quot;&gt;t \leq T&lt;/script&gt; price of such an option is &lt;script type=&quot;math/tex&quot;&gt;P(D_t,t,T,Q) = E^{\mathcal{Q}}_t \left[ \max(Q-D_T, 0) \right]&lt;/script&gt;, where &lt;script type=&quot;math/tex&quot;&gt;\mathcal{Q}&lt;/script&gt; denotes the risk-neutral probability measure, and thus the expected profit can be written as&lt;/p&gt;
@@ -46,22 +46,42 @@ t_l&lt; t_s %]]&gt;&lt;/script&gt; for a cost &lt;script type=&quot;math/tex&quo
 c_l &lt; c_s %]]&gt;&lt;/script&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;This is typical of a situation when a firm can choose between a local production or a delocalization. Now, the interesting question is: how can we value lead time? In other words, what are the right &lt;script type=&quot;math/tex&quot;&gt;c_l&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;c_s&lt;/script&gt; to compensate the firm for the uncertainty about future demand? Or given &lt;script type=&quot;math/tex&quot;&gt;c_l&lt;/script&gt;, which &lt;script type=&quot;math/tex&quot;&gt;c_s&lt;/script&gt; would the firm require to be indifferent between producing at &lt;script type=&quot;math/tex&quot;&gt;t_s&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;t_l&lt;/script&gt;?&lt;/p&gt;
+&lt;p&gt;This is typical of a situation when a firm can choose between a local production or a delocalization. Now, the interesting question is: how can we value lead time? In other words, what are the right &lt;script type=&quot;math/tex&quot;&gt;c_l&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;c_s&lt;/script&gt; to compensate the firm for the uncertainty about future demand? Or given &lt;script type=&quot;math/tex&quot;&gt;c_s&lt;/script&gt;, which &lt;script type=&quot;math/tex&quot;&gt;c_l&lt;/script&gt; would the firm require to be indifferent between producing at &lt;script type=&quot;math/tex&quot;&gt;t_s&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;t_l&lt;/script&gt;?&lt;/p&gt;
 
-&lt;p&gt;For the sake of simplicity, we will fix &lt;script type=&quot;math/tex&quot;&gt;t_s = T&lt;/script&gt; (i.e., &lt;script type=&quot;math/tex&quot;&gt;c_s&lt;/script&gt; is the make-to-order cost), &lt;script type=&quot;math/tex&quot;&gt;t_l=0&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;D_0=1&lt;/script&gt;. Given &lt;script type=&quot;math/tex&quot;&gt;c_l&lt;/script&gt;, let &lt;script type=&quot;math/tex&quot;&gt;Q_l&lt;/script&gt; denote the profit maximizing order quantity. If the distribution of the demand is known, then &lt;script type=&quot;math/tex&quot;&gt;Q_l&lt;/script&gt; can be computed as for the newsvendor model. Otherwise, one has to numerically solve
+&lt;p&gt;For the sake of simplicity, we will fix &lt;script type=&quot;math/tex&quot;&gt;t_s = T&lt;/script&gt; (i.e., &lt;script type=&quot;math/tex&quot;&gt;c_s&lt;/script&gt; is the make-to-order cost), &lt;script type=&quot;math/tex&quot;&gt;t_l=0&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;D_0=1&lt;/script&gt;. Given &lt;script type=&quot;math/tex&quot;&gt;c_l&lt;/script&gt;, let &lt;script type=&quot;math/tex&quot;&gt;Q_l&lt;/script&gt; denote the profit maximizing order quantity, namely
 \[
- Q_l = \mbox{argmax}_Q \left\lbrace (p-c_l) Q - (p-s) P(1,0,T,Q) \right\rbrace.
+ Q_l(c_l) = \mbox{argmax}_Q \left\lbrace (p-c_l) Q - (p-s) P(1,0,T,Q) \right\rbrace.
 \]&lt;/p&gt;
 
 &lt;p&gt;In the make-to-order case, it is clear that &lt;script type=&quot;math/tex&quot;&gt;Q_s=D_T&lt;/script&gt;. Since, under the absence of arbitrage, we have 
-&lt;script type=&quot;math/tex&quot;&gt;E^{\mathcal{Q}}_t \left[ D_T \right] = D_t&lt;/script&gt;, it follows that the expected profit at time &lt;script type=&quot;math/tex&quot;&gt;0&lt;/script&gt; is simply &lt;script type=&quot;math/tex&quot;&gt;p-c_s&lt;/script&gt;. 
-As such, the cost &lt;script type=&quot;math/tex&quot;&gt;c_s&lt;/script&gt; making the firm indifferent between producing at time &lt;script type=&quot;math/tex&quot;&gt;0&lt;/script&gt; or time &lt;script type=&quot;math/tex&quot;&gt;T&lt;/script&gt; is given by&lt;/p&gt;
+&lt;script type=&quot;math/tex&quot;&gt;E^{\mathcal{Q}}_t \left[ D_T \right] = D_t&lt;/script&gt;, it follows that the expected profit at time &lt;script type=&quot;math/tex&quot;&gt;0&lt;/script&gt; is simply &lt;script type=&quot;math/tex&quot;&gt;E^{\mathcal{Q}}_0 \left[ \Pi_T(c_s) \right] = p-c_s&lt;/script&gt;. 
+Furthermore, since the cost &lt;script type=&quot;math/tex&quot;&gt;c_l&lt;/script&gt; making the firm indifferent between producing at time &lt;script type=&quot;math/tex&quot;&gt;0&lt;/script&gt; or time &lt;script type=&quot;math/tex&quot;&gt;T&lt;/script&gt; is the cost such that the expected profits are equal, namely &lt;script type=&quot;math/tex&quot;&gt;E^{\mathcal{Q}}_0 \left[ \Pi_T(c_s) \right] = E^{\mathcal{Q}}_0 \left[ \Pi_T(c_l) \right]&lt;/script&gt;, it is the solution to&lt;/p&gt;
 
 &lt;p&gt;\[
-c_s = p - (p-c_l) Q_l + (p-s) P(1,0,T,Q_l).
+p-c_s = (p-c_l) Q_l(c_l) + (p-s) P(1,0,T,Q_l(c_l)).
 \]&lt;/p&gt;
 
-&lt;p&gt;In the &lt;a href=&quot;https://shiny.rstudio.com/&quot;&gt;shiny app&lt;/a&gt; below (see &lt;a href=&quot;https://tvatter.shinyapps.io/shinycdf/&quot;&gt;https://tvatter.shinyapps.io/shinycdf/&lt;/a&gt; for the full screen version), we assume that &lt;script type=&quot;math/tex&quot;&gt;T=1&lt;/script&gt; and show the cost differential frontier, namely &lt;script type=&quot;math/tex&quot;&gt;(c_s-c_l)/c_s&lt;/script&gt; as a function of &lt;script type=&quot;math/tex&quot;&gt;t_l \in [0,T]&lt;/script&gt;:&lt;/p&gt;
+&lt;p&gt;In the &lt;a href=&quot;https://shiny.rstudio.com/&quot;&gt;shiny app&lt;/a&gt; below (see &lt;a href=&quot;https://tvatter.shinyapps.io/shinycdf/&quot;&gt;https://tvatter.shinyapps.io/shinycdf/&lt;/a&gt; for the full screen version), we assume that &lt;script type=&quot;math/tex&quot;&gt;T=1&lt;/script&gt; and show the cost differential frontier, namely &lt;script type=&quot;math/tex&quot;&gt;(c_s-c_l)/c_s&lt;/script&gt; as a function of &lt;script type=&quot;math/tex&quot;&gt;t_l \in [0,T]&lt;/script&gt;.&lt;/p&gt;
+
+&lt;!--There are currently four stochastic processes (without drift) available for the demand:
+* The geometric Brownian motion: 
+\\[
+dD_t = \sigma D_t dW_t
+\\]
+* The Heston stochastic volatility model: 
+\\[
+\begin{align}
+dD_t = \sqrt{v_t} D_t dW_{1,t} \\
+v_t = \kappa (\theta - v_t) dt + \sigma \sqrt{v_t} dW_{2,t}
+\end{align}
+\\]
+* The Heston stochastic volatility model: 
+\\[
+\begin{align}
+dD_t = \sqrt{v_t} D_t dW_{1,t} \\
+v_t = \kappa (\theta - v_t) dt + \sigma \sqrt{v_t} dW_{2,t}
+\end{align}
+\\]--&gt;
 
 &lt;iframe src=&quot;https://tvatter.shinyapps.io/shinycdf/&quot; width=&quot;100%&quot; height=&quot;600&quot; style=&quot;border: none;&quot;&gt;&lt;/iframe&gt;
 

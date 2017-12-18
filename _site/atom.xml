@@ -4,7 +4,7 @@
  <title></title>
  <link href="https://tvatter.github.io//atom.xml" rel="self"/>
  <link href="https://tvatter.github.io//"/>
- <updated>2017-06-19T09:48:26-04:00</updated>
+ <updated>2017-12-18T01:40:23+00:00</updated>
  <id>https://tvatter.github.io/</id>
  <author>
    <name>Thibault Vatter</name>
@@ -15,7 +15,7 @@
  <entry>
    <title>The value of lead time</title>
    <link href="https://tvatter.github.io//2017/06/16/the-value-of-lead-time/"/>
-   <updated>2017-06-16T00:00:00-04:00</updated>
+   <updated>2017-06-16T00:00:00+01:00</updated>
    <id>https://tvatter.github.io//2017/06/16/the-value-of-lead-time</id>
    <content type="html">&lt;p&gt;In &lt;a href=&quot;#references&quot;&gt;two very nice papers&lt;/a&gt;, Suzanne and her collaborators developped 
 an interesting idea about valuing lead time based on financial mathematics concepts used traditionally for option pricing. In the &lt;a href=&quot;https://en.wikipedia.org/wiki/Newsvendor_model&quot;&gt;standard newsvendor model&lt;/a&gt;, the profits of the firm at delivery time &lt;script type=&quot;math/tex&quot;&gt;T&lt;/script&gt; for an order of &lt;script type=&quot;math/tex&quot;&gt;Q&lt;/script&gt; units are&lt;/p&gt;
@@ -100,7 +100,7 @@ v_t = \kappa (\theta - v_t) dt + \sigma \sqrt{v_t} dW_{2,t}
  <entry>
    <title>Another look at confounding</title>
    <link href="https://tvatter.github.io//2017/03/29/another-look-at-confounding/"/>
-   <updated>2017-03-29T00:00:00-04:00</updated>
+   <updated>2017-03-29T00:00:00+01:00</updated>
    <id>https://tvatter.github.io//2017/03/29/another-look-at-confounding</id>
    <content type="html">&lt;p&gt;Assume that one is interested in studying a relationship between two random 
 variables &lt;script type=&quot;math/tex&quot;&gt;X&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;Y&lt;/script&gt;. Simply put, a variable &lt;script type=&quot;math/tex&quot;&gt;Z&lt;/script&gt; is said to be confonfounding 
@@ -175,7 +175,7 @@ without taking into account the effect of &lt;script type=&quot;math/tex&quot;&g
  <entry>
    <title>Set up Travis to embed R in a non-R project</title>
    <link href="https://tvatter.github.io//2017/01/11/set-up-travis-to-embed-r-in-non-r-project/"/>
-   <updated>2017-01-11T00:00:00-05:00</updated>
+   <updated>2017-01-11T00:00:00+00:00</updated>
    <id>https://tvatter.github.io//2017/01/11/set-up-travis-to-embed-r-in-non-r-project</id>
    <content type="html">&lt;p&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Continuous_integration&quot;&gt;Continuous integration&lt;/a&gt; 
 (&lt;a href=&quot;https://en.wikipedia.org/wiki/Continuous_integration&quot;&gt;CI&lt;/a&gt;) is great way of ensuring that code working in your 
@@ -264,7 +264,7 @@ in &lt;a href=&quot;https://github.com/tvatter/vinecopulib&quot;&gt;vinecopulib&
  <entry>
    <title>My Mathematics Genealogy</title>
    <link href="https://tvatter.github.io//2017/01/10/my-mathematics-genealogy/"/>
-   <updated>2017-01-10T00:00:00-05:00</updated>
+   <updated>2017-01-10T00:00:00+00:00</updated>
    <id>https://tvatter.github.io//2017/01/10/my-mathematics-genealogy</id>
    <content type="html">&lt;p&gt;OK, so the first post on this blog is about my (mathematics) genealogy, how narcissistic of me. 
 Anyway, I was looking at various ways to crawl and harvest data from websites (i.e., web crawling and scraping), and I thought that it could be fun to learn about it by extracting my ancestry from the 

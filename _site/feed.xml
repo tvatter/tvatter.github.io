@@ -5,8 +5,8 @@
     <description>&lt;a href=&quot;https://scholar.google.ch/citations?user=C1G2OxkAAAAJ&amp;hl=en&quot; target=&quot;_blank&quot;&gt;Google Scholar&lt;/a&gt;, &lt;a href=&quot;https://github.com/tvatter&quot;&gt;Github&lt;/a&gt;, &lt;a href=&quot;mailto:thibault.vatter@gmail.com&quot;&gt;email&lt;/a&gt;</description>
     <link>https://tvatter.github.io///</link>
     <atom:link href="https://tvatter.github.io///feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 19 Jun 2017 09:48:26 -0400</pubDate>
-    <lastBuildDate>Mon, 19 Jun 2017 09:48:26 -0400</lastBuildDate>
+    <pubDate>Mon, 18 Dec 2017 01:40:23 +0000</pubDate>
+    <lastBuildDate>Mon, 18 Dec 2017 01:40:23 +0000</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
     
       <item>
@@ -89,7 +89,7 @@ v_t = \kappa (\theta - v_t) dt + \sigma \sqrt{v_t} dW_{2,t}
 &lt;a href=&quot;http://dx.doi.org/10.1016/j.jom.2014.06.002&quot;&gt;Valuing lead time&lt;/a&gt;&lt;br /&gt;
 &lt;em&gt;Journal of Operations Management, Volume 32, Issue 6, 337-346&lt;/em&gt;&lt;/p&gt;
 </description>
-        <pubDate>Fri, 16 Jun 2017 00:00:00 -0400</pubDate>
+        <pubDate>Fri, 16 Jun 2017 00:00:00 +0100</pubDate>
         <link>https://tvatter.github.io///2017/06/16/the-value-of-lead-time/</link>
         <guid isPermaLink="true">https://tvatter.github.io///2017/06/16/the-value-of-lead-time/</guid>
         
@@ -174,7 +174,7 @@ without taking into account the effect of &lt;script type=&quot;math/tex&quot;&g
 
 &lt;p&gt;To summarize, rather than explaining some (or all) of the dependence between the variables of interest, it is also worth looking at confounding variables as masking relationships!&lt;/p&gt;
 </description>
-        <pubDate>Wed, 29 Mar 2017 00:00:00 -0400</pubDate>
+        <pubDate>Wed, 29 Mar 2017 00:00:00 +0100</pubDate>
         <link>https://tvatter.github.io///2017/03/29/another-look-at-confounding/</link>
         <guid isPermaLink="true">https://tvatter.github.io///2017/03/29/another-look-at-confounding/</guid>
         
@@ -271,7 +271,7 @@ the R packages &lt;a href=&quot;https://cran.r-project.org/web/packages/Rcpp/ind
 &lt;a href=&quot;https://cran.r-project.org/web/packages/RInside/index.html&quot;&gt;RInside&lt;/a&gt; (to Embed R in C++ Applications), as we did 
 in &lt;a href=&quot;https://github.com/tvatter/vinecopulib&quot;&gt;vinecopulib&lt;/a&gt;.&lt;/p&gt;
 </description>
-        <pubDate>Wed, 11 Jan 2017 00:00:00 -0500</pubDate>
+        <pubDate>Wed, 11 Jan 2017 00:00:00 +0000</pubDate>
         <link>https://tvatter.github.io///2017/01/11/set-up-travis-to-embed-r-in-non-r-project/</link>
         <guid isPermaLink="true">https://tvatter.github.io///2017/01/11/set-up-travis-to-embed-r-in-non-r-project/</guid>
         
@@ -382,7 +382,7 @@ selecting the sub-graph corresponding to my neighborhood of order 18 using &lt;c
 function (i.e., selecting ancestors with a degree of separation less than or equal to 18):
 &lt;img src=&quot;/figure/source/my-mathematics-genealogy/2017-01-10-my-mathematics-genealogy/ancestry_graph-1.png&quot; alt=&quot;plot of chunk ancestry_graph&quot; /&gt;&lt;/p&gt;
 </description>
-        <pubDate>Tue, 10 Jan 2017 00:00:00 -0500</pubDate>
+        <pubDate>Tue, 10 Jan 2017 00:00:00 +0000</pubDate>
         <link>https://tvatter.github.io///2017/01/10/my-mathematics-genealogy/</link>
         <guid isPermaLink="true">https://tvatter.github.io///2017/01/10/my-mathematics-genealogy/</guid>
         

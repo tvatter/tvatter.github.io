@@ -7,22 +7,9 @@ I write R/C++/Python/MATLAB software, mainly for statistical computing, and you 
 
 -----
 
-## C++
-
-#### [vinecopulib: a C++ library for vine copulas](https://github.com/vinecopulib/vinecopulib) 
-
-High-performance C++ library for vine copula modeling based on [Boost](www.boost.org) 
-and [Eigen](http://eigen.tuxfamily.org/).
-
------
-
 ## R
 
-#### [rvinecopulib: R interface to the vinecopulib C++ library](https://cran.r-project.org/web/packages/rvinecopulib/index.html) 
-
-An interface to [vinecopulib](https://github.com/vinecopulib/vinecopulib) 
-
-#### [gamCopula: generalized additive models for bivariate and vine copulas](https://cran.r-project.org/package=gamCopula) 
+#### [gamCopula: generalized additive models for bivariate and vine copulas](https://github.com/tvatter/gamCopula) 
 
 Implementation of various inference and simulation tools to apply generalized additive models to bivariate dependence structures and non-simplified vine copulas. See [Vatter and Chavez-Demoulin, 2015](http://www.sciencedirect.com/science/article/pii/S0047259X15001633) and [Vatter and Nagler, 2016](https://arxiv.org/abs/1608.01593).
 
@@ -30,11 +17,17 @@ Implementation of various inference and simulation tools to apply generalized ad
 
 Provides tools for the statistical analysis of vine copula models. The package includes tools for parameter estimation, model selection, simulation, goodness-of-fit tests, and visualization. Tools for estimation, selection and exploratory data analysis of bivariate copula models are also provided.
 
-#### [copulaDAG: copula-based causal discovery and directed acyclic graphs](https://github.com/tvatter/copulaDAG) 
+#### [rvinecopulib: R interface to the vinecopulib C++ library](https://github.com/vinecopulib/rbinecopulib) 
 
-#### [mdmd: tools to model multivariate discrete mixture distributions](https://github.com/tvatter/mdmd) 
+An interface to the high-performance library for vine copulas modeling. Still in active development.
 
-#### [eecop: tools to solve estimating equations with copulas](https://github.com/tvatter/eecop)
+-----
+
+## C++
+
+#### [vinecopulib: a C++ library for vine copulas](https://github.com/vinecopulib/vinecopulib) 
+
+A C++ implementation of inference algorithms for bivariate and vine copula models. Under construction.
 
 -----
 

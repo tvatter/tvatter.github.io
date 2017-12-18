@@ -191,7 +191,7 @@ an interesting idea about valuing lead time based on financial mathematics conce
 \]</p>
 
 <p>where <script type="math/tex">D_T</script> is the demand, <script type="math/tex">p</script> is the selling price of the product, <script type="math/tex">c</script> its cost and <script type="math/tex">s</script> its salvage value. The usual solution, i.e. the profit-maximizing order quantity is given by <script type="math/tex">Q = F^{-1}(\alpha)</script>,
-where <script type="math/tex">F</script> is the distribution of the unkown demand and <script type="math/tex">\alpha = (p-c)/(p-s)</script>.</p>
+where <script type="math/tex">F</script> is the distribution of the unkown demand, <script type="math/tex">\alpha = (p-c)/(p-s)</script>.</p>
 
 <p>Looking closer at the profits, one recognizes in <script type="math/tex">\max(Q-D_T, 0)</script> the payoff of a put 
 option on the demand with strike <script type="math/tex">Q</script>. Under absence of arbitrage, the <script type="math/tex">t \leq T</script> price of such an option is <script type="math/tex">P(D_t,t,T,Q) = E^{\mathcal{Q}}_t \left[ \max(Q-D_T, 0) \right]</script>, where <script type="math/tex">\mathcal{Q}</script> denotes the risk-neutral probability measure, and thus the expected profit can be written as</p>
@@ -209,42 +209,22 @@ t_l< t_s %]]></script> for a cost <script type="math/tex">% <![CDATA[
 c_l < c_s %]]></script>.</li>
 </ul>
 
-<p>This is typical of a situation when a firm can choose between a local production or a delocalization. Now, the interesting question is: how can we value lead time? In other words, what are the right <script type="math/tex">c_l</script> and <script type="math/tex">c_s</script> to compensate the firm for the uncertainty about future demand? Or given <script type="math/tex">c_s</script>, which <script type="math/tex">c_l</script> would the firm require to be indifferent between producing at <script type="math/tex">t_s</script> and <script type="math/tex">t_l</script>?</p>
+<p>This is typical of a situation when a firm can choose between a local production or a delocalization. Now, the interesting question is: how can we value lead time? In other words, what are the right <script type="math/tex">c_l</script> and <script type="math/tex">c_s</script> to compensate the firm for the uncertainty about future demand? Or given <script type="math/tex">c_l</script>, which <script type="math/tex">c_s</script> would the firm require to be indifferent between producing at <script type="math/tex">t_s</script> and <script type="math/tex">t_l</script>?</p>
 
-<p>For the sake of simplicity, we will fix <script type="math/tex">t_s = T</script> (i.e., <script type="math/tex">c_s</script> is the make-to-order cost), <script type="math/tex">t_l=0</script> and <script type="math/tex">D_0=1</script>. Given <script type="math/tex">c_l</script>, let <script type="math/tex">Q_l</script> denote the profit maximizing order quantity, namely
+<p>For the sake of simplicity, we will fix <script type="math/tex">t_s = T</script> (i.e., <script type="math/tex">c_s</script> is the make-to-order cost), <script type="math/tex">t_l=0</script> and <script type="math/tex">D_0=1</script>. Given <script type="math/tex">c_l</script>, let <script type="math/tex">Q_l</script> denote the profit maximizing order quantity. If the distribution of the demand is known, then <script type="math/tex">Q_l</script> can be computed as for the newsvendor model. Otherwise, one has to numerically solve
 \[
- Q_l(c_l) = \mbox{argmax}_Q \left\lbrace (p-c_l) Q - (p-s) P(1,0,T,Q) \right\rbrace.
+ Q_l = \mbox{argmax}_Q \left\lbrace (p-c_l) Q - (p-s) P(1,0,T,Q) \right\rbrace.
 \]</p>
 
 <p>In the make-to-order case, it is clear that <script type="math/tex">Q_s=D_T</script>. Since, under the absence of arbitrage, we have 
-<script type="math/tex">E^{\mathcal{Q}}_t \left[ D_T \right] = D_t</script>, it follows that the expected profit at time <script type="math/tex">0</script> is simply <script type="math/tex">E^{\mathcal{Q}}_0 \left[ \Pi_T(c_s) \right] = p-c_s</script>. 
-Furthermore, since the cost <script type="math/tex">c_l</script> making the firm indifferent between producing at time <script type="math/tex">0</script> or time <script type="math/tex">T</script> is the cost such that the expected profits are equal, namely <script type="math/tex">E^{\mathcal{Q}}_0 \left[ \Pi_T(c_s) \right] = E^{\mathcal{Q}}_0 \left[ \Pi_T(c_l) \right]</script>, it is the solution to</p>
+<script type="math/tex">E^{\mathcal{Q}}_t \left[ D_T \right] = D_t</script>, it follows that the expected profit at time <script type="math/tex">0</script> is simply <script type="math/tex">p-c_s</script>. 
+As such, the cost <script type="math/tex">c_s</script> making the firm indifferent between producing at time <script type="math/tex">0</script> or time <script type="math/tex">T</script> is given by</p>
 
 <p>\[
-p-c_s = (p-c_l) Q_l(c_l) + (p-s) P(1,0,T,Q_l(c_l)).
+c_s = p - (p-c_l) Q_l + (p-s) P(1,0,T,Q_l).
 \]</p>
 
-<p>In the <a href="https://shiny.rstudio.com/">shiny app</a> below (see <a href="https://tvatter.shinyapps.io/shinycdf/">https://tvatter.shinyapps.io/shinycdf/</a> for the full screen version), we assume that <script type="math/tex">T=1</script> and show the cost differential frontier, namely <script type="math/tex">(c_s-c_l)/c_s</script> as a function of <script type="math/tex">t_l \in [0,T]</script>.</p>
-
-<!--There are currently four stochastic processes (without drift) available for the demand:
-* The geometric Brownian motion: 
-\\[
-dD_t = \sigma D_t dW_t
-\\]
-* The Heston stochastic volatility model: 
-\\[
-\begin{align}
-dD_t = \sqrt{v_t} D_t dW_{1,t} \\
-v_t = \kappa (\theta - v_t) dt + \sigma \sqrt{v_t} dW_{2,t}
-\end{align}
-\\]
-* The Heston stochastic volatility model: 
-\\[
-\begin{align}
-dD_t = \sqrt{v_t} D_t dW_{1,t} \\
-v_t = \kappa (\theta - v_t) dt + \sigma \sqrt{v_t} dW_{2,t}
-\end{align}
-\\]-->
+<p>In the <a href="https://shiny.rstudio.com/">shiny app</a> below (see <a href="https://tvatter.shinyapps.io/shinycdf/">https://tvatter.shinyapps.io/shinycdf/</a> for the full screen version), we assume that <script type="math/tex">T=1</script> and show the cost differential frontier, namely <script type="math/tex">(c_s-c_l)/c_s</script> as a function of <script type="math/tex">t_l \in [0,T]</script>:</p>
 
 <iframe src="https://tvatter.shinyapps.io/shinycdf/" width="100%" height="600" style="border: none;"></iframe>
 

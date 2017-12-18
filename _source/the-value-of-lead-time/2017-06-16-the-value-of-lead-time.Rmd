@@ -18,7 +18,7 @@ an interesting idea about valuing lead time based on financial mathematics conce
 \\]
 
 where $$D_T$$ is the demand, $$p$$ is the selling price of the product, $$c$$ its cost and $$s$$ its salvage value. The usual solution, i.e. the profit-maximizing order quantity is given by $$Q = F^{-1}(\alpha)$$,
-where $$F$$ is the distribution of the unkown demand and $$\alpha = (p-c)/(p-s)$$.
+where $$F$$ is the distribution of the unkown demand, $$\alpha = (p-c)/(p-s)$$.
 
 Looking closer at the profits, one recognizes in $$\max(Q-D_T, 0)$$ the payoff of a put 
 option on the demand with strike $$Q$$. Under absence of arbitrage, the $$t \leq T$$ price of such an option is $$P(D_t,t,T,Q) = E^{\mathcal{Q}}_t \left[ \max(Q-D_T, 0) \right]$$, where $$\mathcal{Q}$$ denotes the risk-neutral probability measure, and thus the expected profit can be written as
@@ -32,42 +32,22 @@ Let us assume that the firm as the choice between
 * producing at $$t_s \leq  T$$ for a cost $$c_s$$,
 * producing at $$t_l< t_s$$ for a cost $$c_l < c_s$$.
 
-This is typical of a situation when a firm can choose between a local production or a delocalization. Now, the interesting question is: how can we value lead time? In other words, what are the right $$c_l$$ and $$c_s$$ to compensate the firm for the uncertainty about future demand? Or given $$c_s$$, which $$c_l$$ would the firm require to be indifferent between producing at $$t_s$$ and $$t_l$$?
+This is typical of a situation when a firm can choose between a local production or a delocalization. Now, the interesting question is: how can we value lead time? In other words, what are the right $$c_l$$ and $$c_s$$ to compensate the firm for the uncertainty about future demand? Or given $$c_l$$, which $$c_s$$ would the firm require to be indifferent between producing at $$t_s$$ and $$t_l$$?
 
-For the sake of simplicity, we will fix $$t_s = T$$ (i.e., $$c_s$$ is the make-to-order cost), $$t_l=0$$ and $$D_0=1$$. Given $$c_l$$, let $$Q_l$$ denote the profit maximizing order quantity, namely
+For the sake of simplicity, we will fix $$t_s = T$$ (i.e., $$c_s$$ is the make-to-order cost), $$t_l=0$$ and $$D_0=1$$. Given $$c_l$$, let $$Q_l$$ denote the profit maximizing order quantity. If the distribution of the demand is known, then $$Q_l$$ can be computed as for the newsvendor model. Otherwise, one has to numerically solve
 \\[
- Q_l(c_l) = \mbox{argmax}_Q \left\lbrace (p-c_l) Q - (p-s) P(1,0,T,Q) \right\rbrace.
+ Q_l = \mbox{argmax}_Q \left\lbrace (p-c_l) Q - (p-s) P(1,0,T,Q) \right\rbrace.
 \\]
 
 In the make-to-order case, it is clear that $$Q_s=D_T$$. Since, under the absence of arbitrage, we have 
-$$E^{\mathcal{Q}}_t \left[ D_T \right] = D_t$$, it follows that the expected profit at time $$0$$ is simply $$ E^{\mathcal{Q}}_0 \left[ \Pi_T(c_s) \right] = p-c_s$$. 
-Furthermore, since the cost $$c_l$$ making the firm indifferent between producing at time $$0$$ or time $$T$$ is the cost such that the expected profits are equal, namely $$E^{\mathcal{Q}}_0 \left[ \Pi_T(c_s) \right] = E^{\mathcal{Q}}_0 \left[ \Pi_T(c_l) \right]$$, it is the solution to
+$$E^{\mathcal{Q}}_t \left[ D_T \right] = D_t$$, it follows that the expected profit at time $$0$$ is simply $$p-c_s$$. 
+As such, the cost $$c_s$$ making the firm indifferent between producing at time $$0$$ or time $$T$$ is given by
 
 \\[
-p-c_s = (p-c_l) Q_l(c_l) + (p-s) P(1,0,T,Q_l(c_l)).
+c_s = p - (p-c_l) Q_l + (p-s) P(1,0,T,Q_l).
 \\]
 
-In the [shiny app](https://shiny.rstudio.com/) below (see [https://tvatter.shinyapps.io/shinycdf/](https://tvatter.shinyapps.io/shinycdf/) for the full screen version), we assume that $$T=1$$ and show the cost differential frontier, namely $$(c_s-c_l)/c_s$$ as a function of $$t_l \in [0,T]$$. 
-
-<!--There are currently four stochastic processes (without drift) available for the demand:
-* The geometric Brownian motion: 
-\\[
-dD_t = \sigma D_t dW_t
-\\]
-* The Heston stochastic volatility model: 
-\\[
-\begin{align}
-dD_t = \sqrt{v_t} D_t dW_{1,t} \\
-v_t = \kappa (\theta - v_t) dt + \sigma \sqrt{v_t} dW_{2,t}
-\end{align}
-\\]
-* The Heston stochastic volatility model: 
-\\[
-\begin{align}
-dD_t = \sqrt{v_t} D_t dW_{1,t} \\
-v_t = \kappa (\theta - v_t) dt + \sigma \sqrt{v_t} dW_{2,t}
-\end{align}
-\\]-->
+In the [shiny app](https://shiny.rstudio.com/) below (see [https://tvatter.shinyapps.io/shinycdf/](https://tvatter.shinyapps.io/shinycdf/) for the full screen version), we assume that $$T=1$$ and show the cost differential frontier, namely $$(c_s-c_l)/c_s$$ as a function of $$t_l \in [0,T]$$:
 
 <iframe src="https://tvatter.shinyapps.io/shinycdf/" width="100%" height="600" style="border: none;"></iframe>
 

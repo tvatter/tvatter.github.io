@@ -6,7 +6,7 @@
     <description>Recent content in Homes on Thibault Vatter</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>&amp;copy; 2017 Thibault Vatter</copyright>
+    <copyright>&amp;copy; 2018 Thibault Vatter</copyright>
     <lastBuildDate>Thu, 01 Feb 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/home/index.xml" rel="self" type="application/rss+xml" />
@@ -18,8 +18,7 @@
       <pubDate>Thu, 01 Feb 2018 00:00:00 +0000</pubDate>
       
       <guid>/home/about/</guid>
-      <description>About me In 2016, I obtained a PhD in Statistics from HEC Lausanne for a thesis entitled Generalized Additive Modeling for Multivariate Distributions,
-under the supervision of Valérie Chavez-Demoulin. As a recipient of a fellowship from the Swiss National Science Foundation, I am now conducting my postdoctoral research in the group of Richard Davis at Columbia University.
+      <description>About me In 2016, I obtained a PhD in Statistics from HEC Lausanne under the supervision of Valérie Chavez-Demoulin. As a recipient of a fellowship from the Swiss National Science Foundation, I then conducted my postdoctoral research in the group of Richard Davis at Columbia University. I am now an assistant professor in the statistics department at Columbia University.
 I am currently working on diverse methodological and applied projects, ranging from solving statistical learning problems using copulas to modeling time-series of counts semiparametrically, and from building high-dimensional risk models for thousands of assets to developing new causal discovery algorithms.</description>
     </item>
     
@@ -29,18 +28,16 @@ I am currently working on diverse methodological and applied projects, ranging f
       <pubDate>Mon, 18 Dec 2017 00:00:00 +0000</pubDate>
       
       <guid>/home/publications/</guid>
-      <description>Preprints Nagler T., Vatter, T. (2018)
-Solving Estimating Equations with Copulas
-Tagasovska, N., Vatter, T. and Chavez-Demoulin, V. (2018)
-Nonparametric Quantile-based Causal Discovery
-Journal articles Vatter, T. and Nagler, T. (2018)
-Generalized additive models for pair-copula constructions
-Journal of Computational and Graphical Statistics, to appear
-Ackerer, D. and Vatter, T. (2017)
-Dependent Defaults and Losses with Factor Copula Models
-Dependence Modeling, 5:375–399
-Vatter, T. and Chavez-Demoulin, V. (2015)
-Generalized additive models for conditional dependence structures</description>
+      <description>In preparation Vatter, T. and Tagasovska, N. (2018)
+Nonparametric Vines as Generative Models
+Vatter, T., Ackerer, D. and Nagler, T. (2018)
+High-Dimensional Pair-Copula Constructions with Financial Applications
+Davis, R. and Vatter, T. (2018)
+Zero-Inflated Time Series of Counts with Shape Constraints
+De Treville, S., Hoffstetter, J. and Vatter, T. (2018)
+Using Point-of-Sale Data To Improve Shelf Replenishment Performance
+Preprints Nagler T., Vatter, T. (2018)
+Solving Estimating Equations with Copulas</description>
     </item>
     
     <item>
@@ -49,13 +46,12 @@ Generalized additive models for conditional dependence structures</description>
       <pubDate>Mon, 18 Dec 2017 00:00:00 +0000</pubDate>
       
       <guid>/home/software/</guid>
-      <description>C++ vinecopulib: High-performance C++ library for vine copula modeling based on Boost and Eigen
-R rvinecopulib: R interface to the vinecopulib C++ library
-gamCopula: Generalized additive models for bivariate conditional dependence structures and vine copulas
-VineCopula: Statistical inference of vine copulas
-copulaDAG: Copula-based causal discovery and directed acyclic graphs, accompanies the paper Nonparametric Quantile-based Causal Discovery
-mdmd: Tools to model multivariate discrete mixture distributions
-eecop: Tools to solve estimating equations with copulas, accompanies the paper Solving Estimating Equations with Copulas.</description>
+      <description>C++ vinecopulib High-performance C++ library for vine copula modeling based on Boost and Eigen
+R rvinecopulib R interface to the vinecopulib C++ library
+kde1d Efficient implementation of univariate local polynomial kernel density estimators that can handle bounded and discrete data.
+gamCopula Generalized additive models for bivariate conditional dependence structures and vine copulas
+VineCopula Statistical inference of vine copulas
+copulaDAG Copula-based causal discovery and directed acyclic graphs, accompanies the paper Nonparametric Quantile-based Causal Discovery</description>
     </item>
     
     <item>
@@ -73,8 +69,9 @@ eecop: Tools to solve estimating equations with copulas, accompanies the paper S
       <pubDate>Mon, 18 Dec 2017 00:00:00 +0000</pubDate>
       
       <guid>/home/teaching/</guid>
-      <description>I am a lecturer for the following courses:
- Math Methods for Political Science (POLS GU4700): Columbia University Data Science for Business Analytics: HEC Lausanne  </description>
+      <description>2018:
+ Statistical Inference (STAT GU4204, STAT GR5204 ) Time series analysis (STAT GU4221, GR5221) Data Science for Business Analytics (HEC Lausanne)  2017:
+ Math Methods for Political Science (POLS GU4700)  </description>
     </item>
     
     <item>
